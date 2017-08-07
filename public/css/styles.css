@@ -1,0 +1,158 @@
+* {
+    padding: 0px;
+}
+
+body {
+    padding-top: 60px;
+}
+
+label {
+    padding-top: 5px;
+}
+
+.navbar-default {
+    background-color: #84bd00;
+    border-bottom: 0px;
+}
+
+.navbar-default .alert {
+    padding-top: 50px;
+}
+
+.navbar-default .navbar-brand {
+    color: #ecebe8;
+}
+
+.navbar-header li {
+    display: inline;
+}
+
+.navbar-header>.fa + .navbar-brand {
+    padding-left: 0px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.navbar-header a {
+    display: inline-block;
+    padding: 18px 14px;
+    margin: 0px 0px;
+}
+
+.navbar-header > .navbar-brand {
+    padding-top: 14px;
+}
+
+.navbar-default .navbar-text {
+    color: #ecebe8;
+}
+
+a:hover, a:active, a:visited, a:focus {
+    text-decoration: none;
+}
+
+a + a.navbar-brand {
+    float: none;
+}
+
+.container-fluid > .navbar-header {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.list-group-item {
+    font-weight: bold;
+}
+
+.split-view-left {
+    border-right: 4px;
+    border-right-color: gray;
+    border-right-style: solid;
+    min-height: 93vh;
+    padding: 0px 0px;
+    top: 50px;
+    bottom: 0px;
+    position: absolute;
+    overflow-y: scroll;
+    padding-bottom: 30px;
+}
+
+.split-view-left > nav {
+    width: 25%;
+    border-right-color: slategray;
+    border-right-style: solid;
+    border-right-width: 4px;
+    opacity: 50%
+}
+
+
+.split-view-left > .partial-nav nav {
+    width: 25%;
+    border-right-color: slategray;
+    border-right-style: solid;
+    border-right-width: 4px;
+    opacity: 50%;
+}
+
+@media(min-width: 992px) {
+    .split-view-right {
+        position: absolute;
+        top: 50px;
+        bottom: 0px;
+        right: 0px;
+        overflow-y: scroll;
+        width: 75%;
+    }
+    .split-view-right > nav {
+        width: 75%;
+        right: 0px;
+        left: 25vw;
+    }
+}
+
+li.widget {
+    list-style: none;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+}
+
+.form-group + label {
+    padding-top: 0px;
+}
+
+.youtube-widget {
+    padding-top: 35px;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.youtube-widget iframe {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    right: 5px;
+    width: 96%;
+    height: 100%;
+}
+
+.widget-toolbar {
+    position: absolute;
+    background-color: white;
+    border-radius: 2px;
+    right: 15px;
+    top: 5px;
+}
+
+.do-not-display{
+    display: none;
+}
+
+/* .form-control + .form-control {
+    margin-top: 10px;
+} */

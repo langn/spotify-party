@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Spotify Party</a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <input type="text"
+           ng-model="song.name"
+           placeholder="Song Name"
+           class="form-control">
+
+    <button class="btn btn-block btn-success"
+            ng-click="model.searchSong(song.name)">Search Songs</button>
+
+    {{model.songs}}
+
+    <ul>
+        <li ng-repeat = "song in model.songs">
+            {{song}}
+        </li>
+    </ul>
+</div>
+

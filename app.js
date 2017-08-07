@@ -4,7 +4,7 @@ const config = require('./app/config/config');
 
 app.use(express.static(__dirname + '/public'));
 
-app.
+app.use(require('./app/routing/routes'));
 
 app.listen(config.port);
 
