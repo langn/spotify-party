@@ -8,4 +8,4 @@ app.use(require('./app/routing/routes'));
 
 app.listen(config.port);
 
-console.log('App listening on port ' + config.port);
+console.log('App listening on port ' + (process.env.PORT || config.port));
