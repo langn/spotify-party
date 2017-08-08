@@ -6,6 +6,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(require('./app/routing/routes'));
 
-app.listen(config.port);
+const port = (process.env.PORT || config.port);
+app.listen(port);
 
-console.log('App listening on port ' + (process.env.PORT || config.port));
+console.log('App listening on port ' + port);
