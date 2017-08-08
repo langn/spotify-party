@@ -11,6 +11,10 @@
             templateUrl: 'views/party/templates/party-new-song.view.client.html',
             controller: 'NewSongController',
             controllerAs: 'model'
+        }).when("/party/:partyId/song/:trackId", {
+            templateUrl: 'views/song/templates/song-detail.view.client.html',
+            controller: 'SongDetailController',
+            controllerAs: 'model'
         });
     }
 })();

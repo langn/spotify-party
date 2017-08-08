@@ -2,11 +2,13 @@
     angular.module('SpotifyParty')
         .controller('NewSongController', NewSongController);
 
-    function NewSongController(SongService) {
+    function NewSongController(SongService, $location, $routeParams) {
         var model = this;
 
-        this.searchSong = searchSong;
+        model.searchSong = searchSong;
+        model.goToDetails = goToDetails;
 
+        var partyId = $routeParams['partyId'];
         function init() {
 
         }
@@ -17,6 +19,10 @@
                 .then(function(songs) {
                     model.songs = songs;
                 });
+        }
+
+        function goToDetails(trackId) {
+            $location.path('/party/' + partyId + /song/ + trackId);
         }
     }
 })();

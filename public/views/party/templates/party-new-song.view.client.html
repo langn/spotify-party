@@ -13,10 +13,8 @@
     <button class="btn btn-block btn-success"
             ng-click="model.searchSong(song.name)">Search Songs</button>
 
-    {{model.songs}}
-
     <ul>
-        <li ng-repeat = "song in model.songs">
+        <li ng-repeat = "song in model.songs" ng-click="model.goToDetails(song.trackId)">
             {{song}}
         </li>
     </ul>

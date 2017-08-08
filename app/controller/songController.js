@@ -30,13 +30,45 @@ function searchSong(request, response) {
                             return {
                                 name: item.name,
                                 artist: item.artists[0].name,
-                                album: item.album.name
+                                album: item.album.name,
+                                trackId: item.id
                             }
                         });
-                    response.status(200).json(songNameList);
+                    return response.status(200).json(songNameList);
+                })
+        });
+
+}
+
+function getSongById(request, response) {
+    //this will be removed in the future
+    authController.authenticateClient()
+        .then(function(accessToken) {
+            const trackId = request.params.trackId;
+
+            const getSongOptions = {
+                uri: 'https://api.spotify.com/v1/tracks/' + trackId,
+                method: 'GET',
+                headers: {
+                    'Authorization' : 'Bearer ' + accessToken
+                },
+                json: true
+            };
+
+            rp(getSongOptions)
+                .then(function(apiResponse) {
+                    const simplifiedResponse = {
+                        name: apiResponse.name,
+                        album: apiResponse.album.name,
+                        artist: apiResponse.artists[0].name,
+                        art: apiResponse.album.images[1],
+                        duration: apiResponse.duration_ms
+                    };
+                    return response.status(200).json(simplifiedResponse);
                 })
         });
 
 }
 
 module.exports.searchSong = searchSong;
+module.exports.getSongById = getSongById;
