@@ -7,6 +7,10 @@
             templateUrl: 'views/home/templates/home.view.client.html',
             controller: 'HomeController',
             controllerAs: 'model'
+        }).when("/party/:partyId", {
+            templateUrl: 'views/party/templates/party.view.client.html',
+            controller: 'PartyController',
+            controllerAs: 'model'
         }).when("/party/:partyId/add-song", {
             templateUrl: 'views/party/templates/party-new-song.view.client.html',
             controller: 'NewSongController',

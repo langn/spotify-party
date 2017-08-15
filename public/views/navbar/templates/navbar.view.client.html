@@ -1,6 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header pull-left">
         <div ng-switch="navModel.pageName" class="float">
+            <div ng-switch-when="PARTY">
+                <a href="#/" class="fa fa-arrow-left fa-lg"></a>
+            </div>
             <div ng-switch-when="SONG-DETAILS">
                 <a ng-click="model.goToSongList()" class="fa fa-arrow-left fa-lg"></a>
             </div>
@@ -11,6 +14,10 @@
         <div ng-switch="navModel.pageName">
             <div ng-switch-when="HOME">
                 <a href="#/login">Login</a>
+            </div>
+            <div ng-switch-when="PARTY">
+                <a class="fa fa-users fa-lg" ng-click="model.goToUsers()"></a>
+                <a class="fa fa-plus fa-lg" ng-click="model.goToSongSearch()"></a>
             </div>
         </div>
     </div>

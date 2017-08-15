@@ -27,7 +27,7 @@
         }
 
         function createParty() {
-            PartyService.createParty(host)
+            PartyService.createParty()
                 .then((party) => {
                     $location.path('/party/' + party._id);
                 }).catch((error) => {

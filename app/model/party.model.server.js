@@ -7,10 +7,12 @@ partyModel.getPartyById = getPartyById;
 
 module.exports = partyModel;
 
-function createParty(host) {
-    const mockHost = {firstName: 'Bob', lastName: 'Smith', spotifyId: 123, username: 'Bob'};
+function createParty() {
+    let mockSongs = [{title: 'Testerino'}];
+    const mockHost = {firstName: 'Bob', lastName: 'Smith', spotifyId: 123, username: 'Bob', password: 'Secret123'};
     const party = {
-        host: mockHost
+        host: mockHost,
+        songs: mockSongs
     };
     return partyModel.create(party);
 }

@@ -5,7 +5,8 @@ const songSchema = mongoose.Schema({
     artist: String,
     album: String,
     artUrl: String,
-    votes: Number
+    votes: Number,
+    trackId: String
 });
 
 module.exports = songSchema;

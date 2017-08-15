@@ -57,6 +57,10 @@ label {
    padding: 14px;
 }
 
+.navbar-header + .pull-right a + .fa {
+    padding: 18px 14px;
+}
+
 .navbar-header > .navbar-brand {
     padding-top: 14px;
 }

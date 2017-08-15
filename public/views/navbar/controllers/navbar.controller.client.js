@@ -20,11 +20,14 @@
             var page = 'UNKNOWN-PAGE';
 
             switch ($route.current.templateUrl) {
-                case 'views/song/templates/song-detail.view.client.html':
-                    page = 'SONG-DETAILS';
-                    break;
                 case 'views/home/templates/home.view.client.html' :
                     page = 'HOME';
+                    break;
+                case 'views/party/templates/party.view.client.html' :
+                    page = "PARTY";
+                    break;
+                case 'views/song/templates/song-detail.view.client.html':
+                    page = 'SONG-DETAILS';
                     break;
             }
             return page;
