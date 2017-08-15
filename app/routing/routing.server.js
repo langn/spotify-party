@@ -1,8 +1,11 @@
 const express = require('express');
-const songController = require('../controller/song.controller.server');
+const songService = require('../services/song.service.server');
+const partyService = require('../services/party.service.server');
 const router = express.Router();
 
-router.get('/api/song/search', songController.searchSong);
-router.get('/api/song/:trackId', songController.getSongById);
+router.post('/api/party', partyService.createParty);
+
+router.get('/api/song/search', songService.searchSong);
+router.get('/api/song/:trackId', songService.getSongById);
 
 module.exports = router;
