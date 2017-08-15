@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const config = require('./app/config/config');
+require('./app/config/databse-config');
 
 app.use(express.static(__dirname + '/public'));
 
