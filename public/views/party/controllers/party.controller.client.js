@@ -2,7 +2,7 @@
     angular.module('SpotifyParty')
         .controller('PartyController', PartyController);
 
-    function PartyController(PartyService, $routeParams) {
+    function PartyController(PartyService, $routeParams, $location) {
         const model = this;
 
         model.goToUsers = goToUsers;
@@ -17,6 +17,7 @@
                 }).catch((error) => {
                     console.error(error);
             });
+            model.pageTitle = 'X\'s party';
         }
         init();
 
@@ -25,7 +26,7 @@
         }
 
         function goToSongSearch() {
-
+            $location.path('/party/' + partyId + '/add-song');
         }
 
     }

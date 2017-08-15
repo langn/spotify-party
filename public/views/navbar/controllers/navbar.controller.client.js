@@ -26,6 +26,9 @@
                 case 'views/party/templates/party.view.client.html' :
                     page = "PARTY";
                     break;
+                case 'views/party/templates/party-new-song.view.client.html' :
+                    page = "NEW-SONG";
+                    break;
                 case 'views/song/templates/song-detail.view.client.html':
                     page = 'SONG-DETAILS';
                     break;

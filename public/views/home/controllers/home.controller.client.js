@@ -8,6 +8,7 @@
         model.goToParty = goToParty;
         model.createParty = createParty;
 
+        model.pageTitle = 'Spotify Party';
         function init() {
             model.couldNotFindParty = false;
         }

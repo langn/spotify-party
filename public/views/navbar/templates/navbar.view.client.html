@@ -4,11 +4,14 @@
             <div ng-switch-when="PARTY">
                 <a href="#/" class="fa fa-arrow-left fa-lg"></a>
             </div>
+            <div ng-switch-when="NEW-SONG">
+                <a ng-click="model.goToParty()" class="fa fa-arrow-left fa-lg"></a>
+            </div>
             <div ng-switch-when="SONG-DETAILS">
                 <a ng-click="model.goToSongList()" class="fa fa-arrow-left fa-lg"></a>
             </div>
         </div>
-        <a class="navbar-brand" href="/">Spotify Party</a>
+        <a class="navbar-brand" href="/">{{model.pageTitle}}</a>
     </div>
     <div class="navbar-header pull-right">
         <div ng-switch="navModel.pageName">

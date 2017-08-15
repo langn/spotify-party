@@ -3,14 +3,15 @@
         .controller('NewSongController', NewSongController);
 
     function NewSongController(SongService, $location, $routeParams) {
-        var model = this;
+        const model = this;
 
         model.searchSong = searchSong;
+        model.goToParty = goToParty;
         model.goToDetails = goToDetails;
 
-        var partyId = $routeParams['partyId'];
+        const partyId = $routeParams['partyId'];
+        model.pageTitle = 'Song Search';
         function init() {
-
         }
         init();
 
@@ -23,6 +24,10 @@
 
         function goToDetails(trackId) {
             $location.path('/party/' + partyId + /song/ + trackId);
+        }
+
+        function goToParty() {
+            $location.path('/party/' + partyId);
         }
     }
 })();

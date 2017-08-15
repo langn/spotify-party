@@ -1,8 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/">Spotify Party</a>
-    </div>
-</nav>
+<main-nav></main-nav>
 
 <div class="container-fluid">
     <input type="text"
@@ -15,7 +11,7 @@
 
     <ul>
         <li ng-repeat = "song in model.songs" ng-click="model.goToDetails(song.trackId)">
-            {{song}}
+            <ng-include src="'/views/song/templates/song-mini.view.client.html'"></ng-include>
         </li>
     </ul>
 </div>
