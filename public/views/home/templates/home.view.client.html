@@ -1,12 +1,13 @@
 <main-nav></main-nav>
 
 <div class="container-fluid">
+    <div ng-if="model.couldNotFindParty" class="alert alert-warning">Could not find party with that ID. Try again</div>
     <h1 align="center">Welcome!</h1>
     <h2 align="center">Join a party by inputting a party ID below</h2>
     <div class="input-group">
-        <input class="form-control" placeholder="Party ID">
+        <input class="form-control" ng-model="partyId" placeholder="Party ID">
         <span class="input-group-btn">
-        <button ng-click="model.goToParty()" class="btn btn-secondary" type="button">Go!</button>
+        <button ng-click="model.goToParty(partyId)" class="btn btn-secondary" type="button">Go!</button>
     </span></div>
     <button ng-click="model.createParty()" class="btn btn-block btn-primary">Create my own!</button>
 </div>

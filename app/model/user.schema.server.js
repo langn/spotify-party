@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     username: String,
     password: String,
-    first: String,
-    last: String,
+    firstName: String,
+    lastName: String,
     spotifyAccessToken: String,
     spotifyUsername: String
 }, {collection: 'user'});
