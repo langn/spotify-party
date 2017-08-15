@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header pull-left">
+        <div ng-switch="navModel.pageName" class="float">
+            <div ng-switch-when="SONG-DETAILS">
+                <a ng-click="model.goToSongList()" class="fa fa-arrow-left fa-lg"></a>
+            </div>
+        </div>
+        <a class="navbar-brand" href="/">Spotify Party</a>
+    </div>
+    <div class="navbar-header pull-right">
+        <div ng-switch="navModel.pageName">
+            <div ng-switch-when="HOME">
+                <a href="#/login">Login</a>
+            </div>
+        </div>
+    </div>
+</nav>

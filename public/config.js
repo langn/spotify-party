@@ -4,8 +4,8 @@
 
     function configuration($routeProvider) {
         $routeProvider.when("/", {
-            templateUrl: 'views/user/templates/login.view.client.html',
-            controller: 'LoginController',
+            templateUrl: 'views/home/templates/home.view.client.html',
+            controller: 'HomeController',
             controllerAs: 'model'
         }).when("/party/:partyId/add-song", {
             templateUrl: 'views/party/templates/party-new-song.view.client.html',

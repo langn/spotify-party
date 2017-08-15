@@ -4,7 +4,12 @@
 
     function PartyService($http) {
         this.searchSong = searchSong;
+        this.checkIfPartyExists = checkIfPartyExists;
         this.addSongToParty = addSongToParty;
+
+        function checkIfPartyExists(partyId) {
+
+        }
 
         function addSongToParty(partyId, songId) {
             return $http.put("/api/party/" + partyId + "/add-song", song)
