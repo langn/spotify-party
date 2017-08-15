@@ -1,5 +1,5 @@
 const rp = require('request-promise-native');
-const authController = require('./authController');
+const authController = require('./authentication.controller.server');
 const _ = require('lodash');
 
 function searchSong(request, response) {

@@ -5,7 +5,7 @@ require('./app/config/databse-config');
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(require('./app/routing/routes'));
+app.use(require('./app/routing/routing.server'));
 
 const port = (process.env.PORT || config.port);
 app.listen(port);
