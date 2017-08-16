@@ -2,7 +2,7 @@
     angular.module('SpotifyParty')
         .controller('RegisterController', RegisterController);
 
-    function RegisterController(UserService) {
+    function RegisterController(UserService, $location) {
         const model = this;
 
         this.registerUser = registerUser;
@@ -18,15 +18,15 @@
             if (checkFields(user)) {
                 UserService.createUser(user)
                     .then((response) => {
-                        if (response.status === 409) {
+                        $location.path('/login');
+                    })
+                    .catch((error) => {
+                        if (error.status === 409) {
                             model.invalidState = true;
                             model.invalidStateMessage = 'That username is taken. Try a different username.'
                         } else {
-                            //TODO go to the profile page
+                            console.log('Error creaing user ' + error);
                         }
-                    })
-                    .catch((error) => {
-                        console.log('Error creaing user ' + error);
                     });
             }
         }

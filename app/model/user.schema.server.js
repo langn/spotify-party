@@ -6,7 +6,8 @@ const userSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     spotifyAccessToken: {type: String, select: false},
-    spotifyUsername: {type: String, select: false}
+    spotifyUsername: {type: String, select: false},
+    friends: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}]
 }, {collection: 'user'});
 
 module.exports = userSchema;

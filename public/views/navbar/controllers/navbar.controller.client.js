@@ -29,6 +29,9 @@
                 case 'views/user/templates/register.view.client.html' :
                     page = 'REGISTER';
                     break;
+                case 'views/user/templates/profile.view.client.html' :
+                    page = 'PROFILE';
+                    break;
                 case 'views/party/templates/party.view.client.html' :
                     page = "PARTY";
                     break;
