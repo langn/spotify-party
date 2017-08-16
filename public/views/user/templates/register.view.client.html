@@ -1,0 +1,16 @@
+<main-nav></main-nav>
+
+<div class="container-fluid">
+    <div  ng-if="model.invalidState" class="alert alert-danger">{{model.invalidStateMessage}}</div>
+    <label for="firstName">First Name</label>
+    <input ng-model="user.firstName" class="form-control" id="firstName">
+    <label for="lastName">Last Name</label>
+    <input ng-model="user.lastName" class="form-control" id="lastName">
+    <label for="username">Username</label>
+    <input ng-model="user.username" class="form-control" id="username">
+    <label for="password">Password</label>
+    <input ng-model="user.password" class="form-control" id="password" type="password">
+    <label for="verifyPassword">Verify Password</label>
+    <input ng-model="user.verifyPassword" class="form-control" id="verifyPassword" type="password">
+    <button ng-click="model.registerUser(user)" class="btn btn-block btn-primary">Create Account</button>
+</div>

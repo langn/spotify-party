@@ -11,6 +11,10 @@
             templateUrl: 'views/user/templates/login.view.client.html',
             controller: 'LoginController',
             controllerAs: 'model'
+        }).when("/register", {
+            templateUrl: 'views/user/templates/register.view.client.html',
+            controller: 'RegisterController',
+            controllerAs: 'model'
         }).when("/party/:partyId", {
             templateUrl: 'views/party/templates/party.view.client.html',
             controller: 'PartyController',
