@@ -215,6 +215,13 @@ li.widget {
     padding-left: 0px;
 }
 
+.btn-spotify {
+    background-color: #1ed760;
+    color: #ffffff;
+}
+
+
+
 .no-wrap {
     white-space:nowrap;
     overflow:hidden;

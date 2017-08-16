@@ -23,6 +23,9 @@
                 case 'views/home/templates/home.view.client.html' :
                     page = 'HOME';
                     break;
+                case 'views/user/templates/login.view.client.html' :
+                    page = 'LOGIN';
+                    break;
                 case 'views/party/templates/party.view.client.html' :
                     page = "PARTY";
                     break;

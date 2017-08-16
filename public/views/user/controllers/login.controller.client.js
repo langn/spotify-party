@@ -5,8 +5,8 @@
     function LoginController() {
         var model = this;
 
+        model.pageTitle = 'Login';
         function init() {
-            model.hello = "Hello from controller"
         }
         init();
     }

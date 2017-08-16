@@ -1,9 +1,11 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/">Spotify Party</a>
-    </div>
-</nav>
+<main-nav></main-nav>
 
 <div class="container-fluid">
-    <a href="/#/party/123/add-song" class="btn btn-block btn-primary">Go To API Experiments</a>
+    <label for="username">Username</label>
+    <input id="username" ng-model="user.username" class="form-control">
+    <label for="password">Password</label>
+    <input id="password" ng-model="user.password" class="form-control" type="password">
+    <button class="btn btn-block btn-primary">Login</button>
+    <button class="btn btn-block btn-spotify">Login with Spotify</button>
+    <button class="btn btn-block btn-warning">Create Account</button>
 </div>

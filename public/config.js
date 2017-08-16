@@ -7,6 +7,10 @@
             templateUrl: 'views/home/templates/home.view.client.html',
             controller: 'HomeController',
             controllerAs: 'model'
+        }).when("/login", {
+            templateUrl: 'views/user/templates/login.view.client.html',
+            controller: 'LoginController',
+            controllerAs: 'model'
         }).when("/party/:partyId", {
             templateUrl: 'views/party/templates/party.view.client.html',
             controller: 'PartyController',
