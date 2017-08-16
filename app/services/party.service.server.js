@@ -1,7 +1,6 @@
 const partyModel = require('../model/party.model.server');
 
 module.exports.createParty = function(req, res) {
-
     partyModel.createParty()
         .then(function(response) {
             return res.status(201).json(response);
@@ -20,6 +19,16 @@ module.exports.getPartyById = function(req, res) {
             return res.status(200).json(response);
         }).catch(function(error) {
             console.error('Error getting party ' + error);
+            return res.sendStatus(500);
+    });
+};
+
+module.exports.addSongToParty = function(req, res) {
+    partyModel.addSongToParty(req.params.partyId, req.body)
+        .then(function() {
+            return res.sendStatus(204);
+        }).catch((error) => {
+            console.error('Error adding song to party ' + error);
             return res.sendStatus(500);
     });
 };

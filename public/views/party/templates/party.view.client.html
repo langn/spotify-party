@@ -1,5 +1,7 @@
 <main-nav></main-nav>
 
-<div ng-repeat="song in model.party.songs">
-    <ng-include src="'/views/song/templates/song-party.view.client.html'"></ng-include>
+<div class="song-mini-group">
+    <div ng-repeat="song in model.party.songs" class="song-mini">
+        <ng-include src="'/views/song/templates/song-party-mini.view.client.html'"></ng-include>
+    </div>
 </div>

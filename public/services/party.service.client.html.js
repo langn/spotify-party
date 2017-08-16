@@ -5,8 +5,6 @@
     function PartyService($http) {
         this.createParty = createParty;
         this.getPartyById = getPartyById;
-        this.addSongToParty = addSongToParty;
-
 
         function createParty(host) {
             return $http.post('/api/party', host)
@@ -30,11 +28,5 @@
                 })
         }
 
-        function addSongToParty(partyId, songId) {
-            return $http.put("/api/party/" + partyId + "/add-song", song)
-                .then(function(response) {
-                    return response.data;
-                });
-        }
     }
 })();

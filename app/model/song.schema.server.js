@@ -5,7 +5,7 @@ const songSchema = mongoose.Schema({
     artist: String,
     album: String,
     artUrl: String,
-    votes: Number,
+    votes: {type: Number, default: 1},
     trackId: String
 });
 

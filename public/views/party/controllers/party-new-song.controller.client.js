@@ -8,6 +8,7 @@
         model.searchSong = searchSong;
         model.goToParty = goToParty;
         model.goToDetails = goToDetails;
+        model.addSongToParty = addSongToParty;
 
         const partyId = $routeParams['partyId'];
         model.pageTitle = 'Song Search';
@@ -28,6 +29,13 @@
 
         function goToParty() {
             $location.path('/party/' + partyId);
+        }
+
+        function addSongToParty(song) {
+            SongService.addSongToParty(partyId, song)
+                .then(() => {
+                    goToParty();
+                });
         }
     }
 })();

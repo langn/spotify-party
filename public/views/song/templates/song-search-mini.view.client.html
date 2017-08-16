@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 remove-padding-left">
+            <img ng-src="{{song.artUrl}}" width="100%">
+        </div>
+        <div class="col-xs-6">
+            <h5 class="no-wrap">{{song.title}}</h5>
+            <h6 class="no-wrap">{{song.artist}}</h6>
+        </div>
+        <div class="vertical-center col-xs-2 float-left">
+            <a ng-click="model.addSongToParty(song)" class="fa fa-plus fa-lg"></a>
+        </div>
+        <div class="vertical-center col-xs-1">
+            <a class="fa fa-caret-right fa-lg"></a>
+        </div>
+    </div>
+</div>

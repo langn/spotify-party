@@ -4,19 +4,24 @@ const partyModel = mongoose.model('PartyModel', partySchema);
 
 partyModel.createParty = createParty;
 partyModel.getPartyById = getPartyById;
+partyModel.addSongToParty = addSongToParty;
 
 module.exports = partyModel;
 
 function createParty() {
-    let mockSongs = [{title: 'Testerino'}];
-    const mockHost = {firstName: 'Bob', lastName: 'Smith', spotifyId: 123, username: 'Bob', password: 'Secret123'};
+    const mockHost = "599396d0b43dc3f31576049e";
     const party = {
         host: mockHost,
-        songs: mockSongs
     };
     return partyModel.create(party);
 }
 
 function getPartyById(partyId) {
     return partyModel.findById(partyId);
+}
+
+function addSongToParty(partyId, song) {
+    return partyModel.update(
+        {_id: partyId},
+        {$push: {songs: song}});
 }

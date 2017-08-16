@@ -28,10 +28,10 @@ function searchSong(request, response) {
                     const songNameList = _.map(parsedResponse.tracks.items,
                         function(item) {
                             return {
-                                name: item.name,
+                                title: item.name,
                                 artist: item.artists[0].name,
-                                album: item.album.name,
-                                trackId: item.id
+                                trackId: item.id,
+                                artUrl: item.album.images[2].url,
                             }
                         });
                     return response.status(200).json(songNameList);
@@ -58,10 +58,10 @@ function getSongById(request, response) {
             rp(getSongOptions)
                 .then(function(apiResponse) {
                     const simplifiedResponse = {
-                        name: apiResponse.name,
+                        title: apiResponse.name,
                         album: apiResponse.album.name,
                         artist: apiResponse.artists[0].name,
-                        art: apiResponse.album.images[1],
+                        artUrl: apiResponse.album.images[1].url,
                         duration: apiResponse.duration_ms
                     };
                     return response.status(200).json(simplifiedResponse);
