@@ -50,7 +50,7 @@ module.exports.logout = function(req, res) {
     res.sendStatus(200);
 };
 
-module.exports.loggedIn = function(req, res) {
+module.exports.checkLogin = function(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
 };
 

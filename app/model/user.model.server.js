@@ -6,6 +6,7 @@ userModel.createUser = createUser;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserById = findUserById;
+userModel.updateUser = updateUser;
 
 module.exports = userModel;
 
@@ -23,4 +24,10 @@ function findUserByCredentials(username, password) {
 
 function findUserById(userId) {
     return userModel.findById(userId);
+}
+
+function updateUser(userId, user) {
+    return userModel.update(
+        {_id: userId},
+        {$set: {firstName: user.firstName, lastName: user.lastName}});
 }

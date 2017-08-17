@@ -6,7 +6,7 @@ const shortid = require('shortid');
 const partySchema = new mongoose.Schema({
     _id : {
         type: String,
-        default: shortid.generate()
+        'default': shortid.generate
     },
     users: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}],
     songs: {type: [SongModel.schema], default: []},

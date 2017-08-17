@@ -21,5 +21,17 @@ module.exports.createUser = function(req, res) {
     });
 };
 
+module.exports.updateUser = function(req, res) {
+    const user = req.body;
+
+    userModel.updateUser(user._id, user)
+        .then(() => {
+            return res.sendStatus(204);
+        }).catch((error) => {
+            console.error('Error updating user ' + error);
+            return res.sendStatus(500);
+    });
+};
+
 
 

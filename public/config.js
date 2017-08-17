@@ -18,7 +18,10 @@
         }).when("/profile", {
             templateUrl: 'views/user/templates/profile.view.client.html',
             controller: 'ProfileController',
-            controllerAs: 'model'
+            controllerAs: 'model',
+            resolve: {
+                user: checkLogin
+            }
         }).when("/party/:partyId", {
             templateUrl: 'views/party/templates/party.view.client.html',
             controller: 'PartyController',
@@ -32,5 +35,20 @@
             controller: 'SongDetailController',
             controllerAs: 'model'
         });
+    }
+
+    function checkLogin(AuthService, $q, $location) {
+        const deferred = $q.defer();
+        AuthService
+            .checkLogin()
+            .then((user) => {
+                if (user === '0') {
+                    deferred.reject();
+                    $location.path('/login');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
     }
 })();

@@ -7,7 +7,9 @@ const router = express.Router();
 const passport = require('passport');
 
 router.post('/api/user', userService.createUser);
+router.put('/api/user', authService.checkAuth, userService.updateUser);
 router.post('/api/login', passport.authenticate('local'), authService.login);
+router.get('/api/checkLogin', authService.checkLogin);
 
 router.post('/api/party', partyService.createParty);
 router.get('/api/party/:partyId', partyService.getPartyById);
