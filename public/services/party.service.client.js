@@ -6,12 +6,10 @@
         this.createParty = createParty;
         this.getPartyById = getPartyById;
 
-        function createParty(host) {
-            return $http.post('/api/party', host)
+        function createParty() {
+            return $http.post('/api/party')
                 .then(function(response) {
                     return response.data;
-                }).catch((error) => {
-                    console.error(error);
                 });
         }
 

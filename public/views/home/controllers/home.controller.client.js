@@ -34,7 +34,11 @@
                 .then((party) => {
                     $location.path('/party/' + party._id);
                 }).catch((error) => {
-                    console.error(error);
+                    if (error.status === 401) {
+                        return $location.path('/login');
+                    } else {
+                        console.error('Error creating party ' + error);
+                    }
             })
         }
 

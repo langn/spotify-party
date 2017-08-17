@@ -1,7 +1,9 @@
 const partyModel = require('../model/party.model.server');
 
 module.exports.createParty = function(req, res) {
-    partyModel.createParty()
+    const host = req.user;
+
+    partyModel.createParty(host)
         .then(function(response) {
             return res.status(201).json(response);
         }).catch(function(error) {

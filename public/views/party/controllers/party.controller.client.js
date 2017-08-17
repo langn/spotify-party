@@ -14,10 +14,10 @@
             PartyService.getPartyById(partyId)
                 .then((party) => {
                     model.party = party;
+                    model.pageTitle = model.party.host.firstName + '\'s Party';
                 }).catch((error) => {
                     console.error(error);
             });
-            model.pageTitle = 'X\'s party';
         }
         init();
 

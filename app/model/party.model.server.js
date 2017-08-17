@@ -8,10 +8,9 @@ partyModel.addSongToParty = addSongToParty;
 
 module.exports = partyModel;
 
-function createParty() {
-    const mockHost = "599396d0b43dc3f31576049e";
+function createParty(host) {
     const party = {
-        host: mockHost,
+        host: host,
     };
     return partyModel.create(party);
 }

@@ -10,7 +10,7 @@ const partySchema = new mongoose.Schema({
     },
     users: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}],
     songs: {type: [SongModel.schema], default: []},
-    host: {type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}
+    host: {type: UserModel.schema}
 }, {collection: "party"});
 
 module.exports = partySchema;

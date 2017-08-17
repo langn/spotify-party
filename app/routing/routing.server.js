@@ -14,7 +14,7 @@ router.post('/api/login', passport.authenticate('local'), authService.login);
 router.post('/api/logout', authService.logout);
 router.get('/api/checkLogin', authService.checkLogin);
 
-router.post('/api/party', partyService.createParty);
+router.post('/api/party', authService.checkAuth, partyService.createParty);
 router.get('/api/party/:partyId', partyService.getPartyById);
 router.put('/api/party/:partyId/add-song', partyService.addSongToParty);
 
