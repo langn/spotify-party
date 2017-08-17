@@ -33,5 +33,34 @@ module.exports.updateUser = function(req, res) {
     });
 };
 
+module.exports.findUserByUsername = function(req, res) {
+    const username = req.query.username;
+
+    userModel.findUserByUsername(username)
+        .then((user) => {
+            if (!user) {
+                return res.sendStatus(404);
+            } else {
+                return res.status(200).json(user);
+            }
+        }).catch((error) => {
+            console.error('Error finding user ' + error);
+            return res.sendStatus(500)
+    })
+};
+
+module.exports.followUser = function(req, res) {
+    const followingUserId = req.user._id;
+    const userIdToFollow = req.body;
+
+    userModel.followUser(followingUserId, userIdToFollow)
+        .then(() => {
+            return res.sendStatus(204)
+        }).catch((error) => {
+            console.error('Error following user ' + error);
+            return res.sendStatus(500)
+    });
+};
+
 
 

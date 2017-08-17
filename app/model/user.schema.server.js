@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
     lastName: String,
     spotifyAccessToken: {type: String, select: false},
     spotifyUsername: {type: String, select: false},
-    friends: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}]
+    following: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}]
 }, {collection: 'user'});
 
 module.exports = userSchema;

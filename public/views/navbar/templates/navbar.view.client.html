@@ -8,7 +8,10 @@
                 <a href="#/login" class="fa fa-arrow-left fa-lg"></a>
             </div>
             <div ng-switch-when="PROFILE">
-                <a ng-click="model.goBack()" class="fa fa-arrow-left fa-lg"></a>
+                <a href="#/" class="fa fa-arrow-left fa-lg"></a>
+            </div>
+            <div ng-switch-when="FOLLOW-USER">
+                <a href="#/profile" class="fa fa-arrow-left fa-lg"></a>
             </div>
             <div ng-switch-when="PARTY">
                 <a href="#/" class="fa fa-arrow-left fa-lg"></a>
@@ -28,7 +31,7 @@
                 <a href="#/login">Login</a>
             </div>
             <div ng-switch-when="PROFILE">
-                <a class="fa fa-plus fa-lg" ng-click="model.goToAddFriend()"></a>
+                <a class="fa fa-users fa-lg" href="#/follow-user"></a>
                 <a class="fa fa-check fa-lg" ng-click="model.updateUser()"></a>
             </div>
             <div ng-switch-when="PARTY">

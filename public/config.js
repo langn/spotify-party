@@ -15,6 +15,13 @@
             templateUrl: 'views/user/templates/register.view.client.html',
             controller: 'RegisterController',
             controllerAs: 'model'
+        }).when("/follow-user", {
+            templateUrl: 'views/user/templates/follow-user.view.client.html',
+            controller: 'FollowUserController',
+            controllerAs: 'model',
+            resolve: {
+                user: checkLogin
+            }
         }).when("/profile", {
             templateUrl: 'views/user/templates/profile.view.client.html',
             controller: 'ProfileController',

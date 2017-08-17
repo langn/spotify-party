@@ -8,6 +8,8 @@ const passport = require('passport');
 
 router.post('/api/user', userService.createUser);
 router.put('/api/user', authService.checkAuth, userService.updateUser);
+router.get('/api/user', userService.findUserByUsername);
+router.put('/api/user/follow', authService.checkAuth, userService.followUser);
 router.post('/api/login', passport.authenticate('local'), authService.login);
 router.get('/api/checkLogin', authService.checkLogin);
 
