@@ -1,0 +1,17 @@
+<main-nav></main-nav>
+
+<div class="container-fluid">
+    <div ng-if="model.notFound" class="alert alert-warning">User not found. Please try again.</div>
+
+    <label for="username">Username</label>
+    <input ng-model="username" id="username" class="form-control" placeholder="username">
+    <button ng-click="model.searchUsername(username)" class="btn btn-spotify btn-block">Search For Username</button>
+
+    <div ng-if="model.matchingUser">
+        <h3>Username</h3>
+        <h4>{{model.matchingUser.username}}</h4>
+        <h3>Name</h3>
+        <h4>{{model.matchingUser.firstName + ' ' + model.matchingUser.lastName}}</h4>
+        <button ng-click="model.addFriend(model.matchingUser._id)" class="btn btn-primary btn-block">Follow User</button>
+    </div>
+</div>

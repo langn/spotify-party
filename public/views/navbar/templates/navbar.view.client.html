@@ -28,7 +28,8 @@
     <div class="navbar-header pull-right">
         <div ng-switch="navModel.pageName">
             <div ng-switch-when="HOME">
-                <a href="#/login">Login</a>
+                <a ng-if="!model.user" href="#/login">Login</a>
+                <a ng-if="model.user" ng-click="model.logout()">Logout</a>
             </div>
             <div ng-switch-when="PROFILE">
                 <a class="fa fa-users fa-lg" href="#/follow-user"></a>

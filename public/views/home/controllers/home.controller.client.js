@@ -2,12 +2,14 @@
     angular.module('SpotifyParty')
         .controller('HomeController', HomeController);
 
-    function HomeController(PartyService, $location) {
+    function HomeController(AuthService, PartyService, $location, user) {
         const model = this;
 
         model.goToParty = goToParty;
         model.createParty = createParty;
+        model.logout = logout;
 
+        model.user = user;
         model.pageTitle = 'Spotify Party';
         function init() {
             model.couldNotFindParty = false;
@@ -34,6 +36,13 @@
                 }).catch((error) => {
                     console.error(error);
             })
+        }
+
+        function logout() {
+            AuthService.logout()
+                .then(() => {
+                    $location.path('/login');
+                });
         }
     }
 })();

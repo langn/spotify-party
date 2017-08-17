@@ -6,7 +6,10 @@
         $routeProvider.when("/", {
             templateUrl: 'views/home/templates/home.view.client.html',
             controller: 'HomeController',
-            controllerAs: 'model'
+            controllerAs: 'model',
+            resolve: {
+                user: checkLogin
+            }
         }).when("/login", {
             templateUrl: 'views/user/templates/login.view.client.html',
             controller: 'LoginController',
@@ -20,14 +23,14 @@
             controller: 'FollowUserController',
             controllerAs: 'model',
             resolve: {
-                user: checkLogin
+                user: accessPrivateResource
             }
         }).when("/profile", {
             templateUrl: 'views/user/templates/profile.view.client.html',
             controller: 'ProfileController',
             controllerAs: 'model',
             resolve: {
-                user: checkLogin
+                user: accessPrivateResource
             }
         }).when("/party/:partyId", {
             templateUrl: 'views/party/templates/party.view.client.html',
@@ -44,7 +47,7 @@
         });
     }
 
-    function checkLogin(AuthService, $q, $location) {
+    function accessPrivateResource(AuthService, $q, $location) {
         const deferred = $q.defer();
         AuthService
             .checkLogin()
@@ -52,6 +55,20 @@
                 if (user === '0') {
                     deferred.reject();
                     $location.path('/login');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function checkLogin(AuthService, $q) {
+        const deferred = $q.defer();
+        AuthService
+            .checkLogin()
+            .then((user) => {
+                if (user === '0') {
+                    deferred.resolve(null);
                 } else {
                     deferred.resolve(user);
                 }

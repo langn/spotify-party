@@ -5,6 +5,7 @@
     function AuthService($http) {
         this.login = login;
         this.checkLogin = checkLogin;
+        this.logout = logout;
 
         function login(username, password) {
             const user = {
@@ -19,6 +20,10 @@
                 .then((response) => {
                     return response.data;
                 });
+        }
+
+        function logout() {
+            return $http.post('/api/logout');
         }
     }
 })();
