@@ -25,7 +25,7 @@
                             model.invalidState = true;
                             model.invalidStateMessage = 'That username is taken. Try a different username.'
                         } else {
-                            console.log('Error creaing user ' + error);
+                            console.log('Error creating user ' + error);
                         }
                     });
             }

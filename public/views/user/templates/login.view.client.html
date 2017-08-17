@@ -1,11 +1,12 @@
 <main-nav></main-nav>
 
 <div class="container-fluid">
+    <div ng-if="model.invalidLogin" class="alert alert-warning">The login provided is incorrect. Please try again</div>
     <label for="username">Username</label>
     <input id="username" ng-model="user.username" class="form-control">
     <label for="password">Password</label>
     <input id="password" ng-model="user.password" class="form-control" type="password">
-    <button class="btn btn-block btn-primary">Login</button>
+    <button ng-click="model.login(user)" class="btn btn-block btn-primary">Login</button>
     <button class="btn btn-block btn-spotify">Login with Spotify</button>
     <a href="#/register" class="btn btn-block btn-warning">Create Account</a>
 </div>
