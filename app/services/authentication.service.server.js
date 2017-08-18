@@ -3,12 +3,8 @@ const base64 = require('base-64');
 const config = require('../config/config');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const SpotifyStrategy = require('passport-spotify').Strategy;
 const userModel = require('../model/user.model.server');
-
-passport.use(new LocalStrategy(localStrategy));
-
-passport.serializeUser(serializeUser);
-passport.deserializeUser(deserializeUser);
 
 module.exports.authenticateClient = authenticateClient;
 module.exports.checkAuth = checkAuth;
@@ -17,6 +13,25 @@ module.exports.checkAdmin = checkAdmin;
 module.exports.login = login;
 module.exports.logout = logout;
 module.exports.checkLogin = checkLogin;
+module.exports.spotifySuccess = spotifySuccess;
+
+passport.use(new LocalStrategy(localStrategy));
+passport.use(new SpotifyStrategy({
+        clientID: config.spotifyClientId,
+        clientSecret: config.spotifyClientSecret,
+        callbackURL: config.spotifyCallackURL
+    }, function(accessToken, refreshToken, profile, done) {
+        userModel.findOrCreateUserBySpotifyId(profile.id)
+            .then((user) => {
+                return done(null, user);
+            }).catch((error) => {
+            return done(error, null);
+        });
+    }
+));
+
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 function authenticateClient() {
     const authHeaderEncoded = base64.encode(config.spotifyClientId + ':' + config.spotifyClientSecret);
@@ -37,7 +52,7 @@ function authenticateClient() {
             return parsedResponse.access_token;
         }).catch(function (error) {
             console.error('Issue obtaining Spotify client token' + error);
-    });
+        });
 }
 
 function checkAuth(req, res, next) {
@@ -64,7 +79,7 @@ function checkAdmin(req, res, next) {
     if (!req.isAuthenticated()) {
         res.sendStatus(401);
     } else if (req.user.role === 'ADMIN') {
-            next();
+        next();
     } else {
         res.sendStatus(401);
     }
@@ -93,7 +108,7 @@ function deserializeUser(user, done) {
         .then((user) => {
             done(null, user);
         }).catch((error) => {
-            done(error, null);
+        done(error, null);
     })
 }
 
@@ -111,3 +126,11 @@ function localStrategy(username, password, done) {
         });
 }
 
+function spotifySuccess(req, res) {
+    const user = req.user;
+    if (!user.username) {
+        res.redirect('/#/profile');
+    } else {
+        res.redirect('/#/');
+    }
+}

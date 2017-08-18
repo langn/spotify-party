@@ -31,5 +31,8 @@ router.put('/api/party/:partyId/add-song', partyService.addSongToParty);
 router.get('/api/song/search', songService.searchSong);
 router.get('/api/song/:trackId', songService.getSongById);
 
+router.get('/auth/spotify', passport.authenticate('spotify', {showDialog: true}));
+router.get('/auth/spotify/callback', passport.authenticate('spotify', {failureRedirect: '/#/login'}), authService.spotifySuccess);
+
 
 module.exports = router;

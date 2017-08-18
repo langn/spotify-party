@@ -3,6 +3,8 @@ const userSchema = require('./user.schema.server');
 const userModel = mongoose.model('UserModel', userSchema);
 
 userModel.createUser = createUser;
+userModel.findOrCreateUserBySpotifyId = findOrCreateUserBySpotifyId;
+userModel.findUserBySpotifyId = findUserBySpotifyId;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserById = findUserById;
@@ -20,6 +22,25 @@ module.exports = userModel;
 
 function createUser(user) {
     return userModel.create(user);
+}
+
+function findOrCreateUserBySpotifyId(spotifyId) {
+    return userModel.findUserBySpotifyId(spotifyId)
+        .then((user) => {
+            if (!user) {
+                const user = {
+                    spotifyId: spotifyId,
+                    username: spotifyId
+                };
+                return userModel.createUser(user);
+            }
+        }).catch((error) => {
+            console.error('Error creating user with spotifyId ' + error);
+        });
+}
+
+function findUserBySpotifyId(spotifyId) {
+    return userModel.findOne({spotifyId: spotifyId});
 }
 
 function findUserByUsername(username) {
