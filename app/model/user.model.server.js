@@ -8,6 +8,7 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserById = findUserById;
 userModel.updateUser = updateUser;
 userModel.followUser = followUser;
+userModel.getFollowedUsers = getFollowedUsers;
 
 module.exports = userModel;
 
@@ -36,5 +37,9 @@ function updateUser(userId, user) {
 function followUser(followingUserId, userIdToFollow) {
     return userModel.update(
         {_id: followingUserId},
-        {$push: {following: userIdToFollow}});
+        {$addToSet: {following: userIdToFollow}});
+}
+
+function getFollowedUsers(userId) {
+    return userModel.findById(userId).populate('following');
 }

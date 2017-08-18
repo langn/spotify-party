@@ -25,6 +25,13 @@
             resolve: {
                 user: accessPrivateResource
             }
+        }).when("/following", {
+            templateUrl: 'views/user/templates/following.view.client.html',
+            controller: 'FollowingController',
+            controllerAs: 'model',
+            resolve: {
+                user: accessPrivateResource
+            }
         }).when("/profile", {
             templateUrl: 'views/user/templates/profile.view.client.html',
             controller: 'ProfileController',

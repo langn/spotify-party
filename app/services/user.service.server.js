@@ -1,6 +1,12 @@
 const userModel = require('../model/user.model.server');
 
-module.exports.createUser = function(req, res) {
+module.exports.createUser = createUser;
+module.exports.updateUser = updateUser;
+module.exports.findUserByUsername = findUserByUsername;
+module.exports.followUser = followUser;
+module.exports.getFollowedUsers = getFollowedUsers;
+
+function createUser(req, res) {
     const user = req.body;
 
     if (!user || !user.firstName || !user.lastName || !user.username || !user.password) {
@@ -19,9 +25,9 @@ module.exports.createUser = function(req, res) {
     }).catch((error) => {
         console.error('Error creating user ' + error);
     });
-};
+}
 
-module.exports.updateUser = function(req, res) {
+function updateUser(req, res) {
     const user = req.body;
 
     userModel.updateUser(user._id, user)
@@ -31,9 +37,9 @@ module.exports.updateUser = function(req, res) {
             console.error('Error updating user ' + error);
             return res.sendStatus(500);
     });
-};
+}
 
-module.exports.findUserByUsername = function(req, res) {
+function findUserByUsername(req, res) {
     const username = req.query.username;
 
     userModel.findUserByUsername(username)
@@ -47,11 +53,11 @@ module.exports.findUserByUsername = function(req, res) {
             console.error('Error finding user ' + error);
             return res.sendStatus(500)
     })
-};
+}
 
-module.exports.followUser = function(req, res) {
+function followUser(req, res) {
     const followingUserId = req.user._id;
-    const userIdToFollow = req.body;
+    const userIdToFollow = req.params.userId;
 
     userModel.followUser(followingUserId, userIdToFollow)
         .then(() => {
@@ -60,7 +66,19 @@ module.exports.followUser = function(req, res) {
             console.error('Error following user ' + error);
             return res.sendStatus(500)
     });
-};
+}
+
+function getFollowedUsers(req, res) {
+    const user = req.user;
+
+    userModel.getFollowedUsers(user._id)
+        .then((response) => {
+            return res.status(200).json(response);
+        }).catch((error) => {
+            console.error('Error getting followed users ' + error);
+            return res.sendStatus(500);
+    })
+}
 
 
 

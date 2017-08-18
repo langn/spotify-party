@@ -11,6 +11,9 @@
                 <a href="#/" class="fa fa-arrow-left fa-lg"></a>
             </div>
             <div ng-switch-when="FOLLOW-USER">
+                <a href="#/following" class="fa fa-arrow-left fa-lg"></a>
+            </div>
+            <div ng-switch-when="FOLLOWING">
                 <a href="#/profile" class="fa fa-arrow-left fa-lg"></a>
             </div>
             <div ng-switch-when="PARTY-LIST">
@@ -26,7 +29,7 @@
                 <a ng-click="model.goToSongList()" class="fa fa-arrow-left fa-lg"></a>
             </div>
         </div>
-        <a class="navbar-brand" href="/">{{model.pageTitle}}</a>
+        <a class="navbar-brand" href="#/">{{model.pageTitle}}</a>
     </div>
     <div class="navbar-header pull-right">
         <div ng-switch="navModel.pageName">
@@ -37,12 +40,15 @@
             </div>
             <div ng-switch-when="PROFILE">
                 <a class="fa fa-music fa-lg" href="#/party"></a>
-                <a class="fa fa-users fa-lg" href="#/follow-user"></a>
+                <a class="fa fa-users fa-lg" href="#/following"></a>
                 <a class="fa fa-check fa-lg" ng-click="model.updateUser()"></a>
             </div>
             <div ng-switch-when="PARTY">
                 <a class="fa fa-users fa-lg" ng-click="model.goToUsers()"></a>
                 <a class="fa fa-plus fa-lg" ng-click="model.goToSongSearch()"></a>
+            </div>
+            <div ng-switch-when="FOLLOWING">
+                <a href="#/follow-user" class="fa fa-plus fa-lg"></a>
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@
 
 body {
     padding-top: 60px;
+    background-color: #ecebe8;
 }
 
 label {
@@ -57,7 +58,7 @@ label {
    padding: 14px;
 }
 
-.navbar-header + .pull-right a + .fa {
+.navbar-header + .pull-right a.fa {
     padding: 18px 14px;
 }
 

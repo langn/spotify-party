@@ -22,7 +22,6 @@
                         model.notFound = true;
                     } else {
                         model.matchingUser = user;
-                        console.log(model.matchingUser);
                     }
             });
         }
