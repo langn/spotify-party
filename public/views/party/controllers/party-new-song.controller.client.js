@@ -13,6 +13,7 @@
         const partyId = $routeParams['partyId'];
         model.pageTitle = 'Song Search';
         function init() {
+            model.songs = SongService.fetchSongsFromCache();
         }
         init();
 

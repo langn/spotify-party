@@ -1,3 +1,3 @@
 (function() {
-    angular.module('SpotifyParty', ['ngRoute']);
+    angular.module('SpotifyParty', ['ngRoute', 'angular-cache']);
 })();

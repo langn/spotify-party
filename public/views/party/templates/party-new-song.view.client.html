@@ -10,7 +10,7 @@
             ng-click="model.searchSong(song.name)">Search Songs</button>
 </div>
 
-<div class="song-mini-group">
+<div class="song-mini-group search">
     <div ng-repeat="song in model.songs" ng-click="model.goToDetails(song.trackId)" class="song-mini">
         <ng-include src="'/views/song/templates/song-search-mini.view.client.html'"></ng-include>
     </div>

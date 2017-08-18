@@ -2,17 +2,31 @@
     angular.module('SpotifyParty')
         .service('SongService', SongService);
 
-    function SongService($http) {
+    function SongService($http, CacheFactory) {
         this.searchSong = searchSong;
         this.getSongById = getSongById;
         this.addSongToParty = addSongToParty;
         this.voteSong = voteSong;
+        this.fetchSongsFromCache = fetchSongsFromCache;
+
+        let songCache;
+
+        if (!CacheFactory.get('songCache')) {
+            songCache = CacheFactory('songCache');
+        }
+
+        function fetchSongsFromCache() {
+            return songCache.get('/songs');
+        }
 
         function searchSong(searchString) {
+            songCache.remove('/songs');
             return $http.get('/api/song/search' + '?searchString=' + searchString)
                 .then(function(response) {
+                    songCache.put('/songs', response.data);
+                    console.log(songCache.get('/songs'));
                     return response.data;
-                })
+                });
         }
 
         function getSongById(trackId) {

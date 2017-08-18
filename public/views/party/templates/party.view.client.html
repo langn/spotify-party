@@ -2,7 +2,7 @@
 
 <div ng-if="model.multipleVotes" class="alert alert-warning">You can't vote for the same song more than once</div>
 
-<div class="song-mini-group">
+<div class="song-mini-group party">
     <div ng-repeat="song in model.party.songs" class="song-mini">
         <ng-include src="'/views/song/templates/song-party-mini.view.client.html'"></ng-include>
     </div>

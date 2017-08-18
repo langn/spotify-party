@@ -13,6 +13,7 @@
         model.pageTitle = 'Spotify Party';
         function init() {
             model.couldNotFindParty = false;
+            model.partyId = PartyService.fetchCachedId();
         }
         init();
 
