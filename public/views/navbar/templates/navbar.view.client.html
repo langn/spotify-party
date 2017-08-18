@@ -16,6 +16,9 @@
             <div ng-switch-when="FOLLOWING">
                 <a href="#/profile" class="fa fa-arrow-left fa-lg"></a>
             </div>
+            <div ng-switch-when="ADMIN-LIST">
+                <a href="#/" class="fa fa-arrow-left fa-lg"></a>
+            </div>
             <div ng-switch-when="PARTY-LIST">
                 <a href="#/" class="fa fa-arrow-left fa-lg"></a>
             </div>
@@ -26,7 +29,7 @@
                 <a ng-click="model.goToParty()" class="fa fa-arrow-left fa-lg"></a>
             </div>
             <div ng-switch-when="SONG-DETAILS">
-                <a ng-click="model.goToSongList()" class="fa fa-arrow-left fa-lg"></a>
+                <a ng-click="model.goBack()" class="fa fa-arrow-left fa-lg"></a>
             </div>
         </div>
         <a class="navbar-brand" href="#/">{{model.pageTitle}}</a>
@@ -34,6 +37,7 @@
     <div class="navbar-header pull-right">
         <div ng-switch="navModel.pageName">
             <div ng-switch-when="HOME">
+                <a href="#/admin" ng-if="model.user.role === 'ADMIN'">Admin</a>
                 <a ng-if="!model.user" href="#/login">Login</a>
                 <a ng-if="model.user" href="#/profile">Profile</a>
                 <a ng-if="model.user" ng-click="model.logout()">Logout</a>
@@ -49,6 +53,9 @@
             </div>
             <div ng-switch-when="FOLLOWING">
                 <a href="#/follow-user" class="fa fa-plus fa-lg"></a>
+            </div>
+            <div ng-switch-when="ADMIN-LIST">
+                <a href="#admin/user/create" class="fa fa-plus fa-lg"></a>
             </div>
         </div>
     </div>

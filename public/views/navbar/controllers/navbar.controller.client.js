@@ -38,6 +38,9 @@
                 case 'views/user/templates/following.view.client.html' :
                     page = 'FOLLOWING';
                     break;
+                case 'views/user/templates/admin-list.view.client.html' :
+                    page = 'ADMIN-LIST';
+                    break;
                 case 'views/party/templates/party-list.view.client.html' :
                     page = "PARTY-LIST";
                     break;

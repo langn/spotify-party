@@ -10,7 +10,14 @@ passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-module.exports.authenticateClient = function() {
+module.exports.authenticateClient = authenticateClient;
+module.exports.checkAuth = checkAuth;
+module.exports.checkAdmin = checkAdmin;
+module.exports.login = login;
+module.exports.logout = logout;
+module.exports.checkLogin = checkLogin;
+
+function authenticateClient() {
     const authHeaderEncoded = base64.encode(config.spotifyClientId + ':' + config.spotifyClientSecret);
 
     const requestOptions = {
@@ -30,29 +37,38 @@ module.exports.authenticateClient = function() {
         }).catch(function (error) {
             console.error('Issue obtaining Spotify client token' + error);
     });
-};
+}
 
-module.exports.checkAuth = function(req, res, next) {
+function checkAuth(req, res, next) {
     if (!req.isAuthenticated()) {
         res.sendStatus(401);
     } else {
         next();
     }
-};
+}
 
-module.exports.login = function(req, res) {
+function checkAdmin(req, res) {
+    const user = req.user;
+    if (user.role === 'ADMIN') {
+        res.status(200).json(true);
+    } else {
+        res.status(401).json(false);
+    }
+}
+
+function login(req, res) {
     const user = req.user;
     res.status(200).json(user);
-};
+}
 
-module.exports.logout = function(req, res) {
+function logout(req, res) {
     req.logOut();
     res.sendStatus(200);
-};
+}
 
-module.exports.checkLogin = function(req, res) {
+function checkLogin(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
-};
+}
 
 function serializeUser(user, done) {
     done(null, user);

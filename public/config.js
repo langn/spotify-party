@@ -32,6 +32,14 @@
             resolve: {
                 user: accessPrivateResource
             }
+        }).when("/admin", {
+            templateUrl: 'views/user/templates/admin-list.view.client.html',
+            controller: 'AdminListController',
+            controllerAs: 'model',
+            resolve: {
+                admin: accessAdminResource,
+                user: accessPrivateResource
+            }
         }).when("/profile", {
             templateUrl: 'views/user/templates/profile.view.client.html',
             controller: 'ProfileController',
@@ -71,6 +79,21 @@
                     $location.path('/login');
                 } else {
                     deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function accessAdminResource(AuthService, $q, $location) {
+        const deferred = $q.defer();
+        AuthService
+            .checkIfAdmin()
+            .then((result) => {
+                if (result) {
+                    deferred.resolve(result);
+                } else {
+                    deferred.reject();
+                    $location.path('/login');
                 }
             });
         return deferred.promise;

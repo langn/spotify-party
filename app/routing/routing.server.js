@@ -14,6 +14,7 @@ router.get('/api/user/following', authService.checkAuth, userService.getFollowed
 router.post('/api/login', passport.authenticate('local'), authService.login);
 router.post('/api/logout', authService.logout);
 router.get('/api/checkLogin', authService.checkLogin);
+router.get('/api/checkAdmin', authService.checkAdmin);
 
 router.post('/api/party', authService.checkAuth, partyService.createParty);
 router.get('/api/party', authService.checkAuth, partyService.getPartiesForUser);

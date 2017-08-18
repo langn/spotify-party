@@ -2,11 +2,12 @@
     angular.module('SpotifyParty')
         .controller('SongDetailController', SongDetailController);
 
-    function SongDetailController(SongService, PartyService, $routeParams, $location) {
+    function SongDetailController(SongService, PartyService, $window, $routeParams, $location) {
         const model = this;
 
         model.goToSongList = goToSongList;
         model.goToParty = goToParty;
+        model.goBack = goBack;
 
         const trackId = $routeParams['trackId'];
         const partyId = $routeParams['partyId'];
@@ -29,6 +30,10 @@
 
         function goToSongList() {
             $location.path('/party/' + partyId + '/add-song');
+        }
+
+        function goBack() {
+            $window.history.back();
         }
 
         function goToParty(party) {

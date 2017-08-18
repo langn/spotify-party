@@ -6,6 +6,7 @@
         this.login = login;
         this.checkLogin = checkLogin;
         this.logout = logout;
+        this.checkIfAdmin = checkIfAdmin;
 
         function login(username, password) {
             const user = {
@@ -19,6 +20,17 @@
             return $http.get('/api/checkLogin')
                 .then((response) => {
                     return response.data;
+                });
+        }
+
+        function checkIfAdmin() {
+            return $http.get('/api/checkAdmin')
+                .then((response) => {
+                    return response.data;
+                }).catch((error) => {
+                    if (error.status === 401) {
+                        return false;
+                    }
                 });
         }
 
