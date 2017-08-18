@@ -4,6 +4,7 @@
 
     function UserService($http) {
         this.createUser = createUser;
+        this.adminCreateUser = adminCreateUser;
         this.updateUser = updateUser;
         this.findUserByUsername = findUserByUsername;
         this.findUserById = findUserById;
@@ -18,6 +19,10 @@
             return $http.post('/api/user', user);
         }
 
+        function adminCreateUser(user) {
+            return $http.post('/api/adminCreateUser', user);
+        }
+
         function updateUser(user) {
             return $http.put('/api/user', user);
         }
@@ -27,11 +32,11 @@
         }
 
         function followUser(userId) {
-            return $http.put('/api/user/follow/' + userId);
+            return $http.put('/api/followUser/' + userId);
         }
 
         function getFollowedUsers() {
-            return $http.get('/api/user/following')
+            return $http.get('/api/followingUsers')
                 .then((response) => {
                     return response.data.following;
                 });

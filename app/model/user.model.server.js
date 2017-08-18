@@ -15,7 +15,6 @@ userModel.getAllUsers = getAllUsers;
 userModel.addFollowingUser = addFollowingUser;
 userModel.deleteUserFromFollowing = deleteUserFromFollowing;
 userModel.deleteUser = deleteUser;
-userModel.getUserById = getUserById;
 
 module.exports = userModel;
 
@@ -32,7 +31,7 @@ function findUserByCredentials(username, password) {
 }
 
 function findUserById(userId) {
-    return userModel.findById(userId);
+    return userModel.findById(userId).populate('following');
 }
 
 function updateUser(userId, user) {
@@ -88,6 +87,3 @@ function getAllUsers() {
     return userModel.find();
 }
 
-function getUserById(userId) {
-    return userModel.findUserById(userId);
-}

@@ -40,6 +40,9 @@
                 case 'views/user/templates/admin-list.view.client.html' :
                     page = 'ADMIN-LIST';
                     break;
+                case 'views/user/templates/admin-create-user.view.client.html' :
+                    page = 'ADMIN-CREATE-USER';
+                    break;
                 case 'views/user/templates/user-details.view.client.html' :
                     page = 'USER-DETAILS';
                     break;

@@ -1,6 +1,7 @@
 const userModel = require('../model/user.model.server');
 
 module.exports.createUser = createUser;
+module.exports.adminCreateUser = adminCreateUser;
 module.exports.updateUser = updateUser;
 module.exports.updateUserAdmin = updateUserAdmin;
 module.exports.findUserByUsername = findUserByUsername;
@@ -12,6 +13,29 @@ module.exports.deleteUser = deleteUser;
 module.exports.getUserById = getUserById;
 
 function createUser(req, res) {
+    const user = req.body;
+
+    user.role = 'USER';
+
+    if (!user || !user.firstName || !user.lastName || !user.username || !user.password) {
+        return res.sendStatus(400);
+    }
+
+    userModel.findUserByUsername(user.username).then((foundUser) => {
+        if (foundUser) {
+            return res.status(409).json('User with that username already exists');
+        } else {
+            return userModel.createUser(user)
+                .then(() => {
+                    return res.sendStatus(201);
+                });
+        }
+    }).catch((error) => {
+        console.error('Error creating user ' + error);
+    });
+}
+
+function adminCreateUser(req, res) {
     const user = req.body;
 
     if (!user || !user.firstName || !user.lastName || !user.username || !user.password) {
@@ -30,6 +54,7 @@ function createUser(req, res) {
     }).catch((error) => {
         console.error('Error creating user ' + error);
     });
+
 }
 
 function updateUser(req, res) {
@@ -137,7 +162,7 @@ function deleteUser(req, res) {
 function getUserById(req, res) {
     const userId = req.params.userId;
 
-    userModel.getUserById(userId)
+    userModel.findUserById(userId)
         .then((user) => {
             if(!user) {
                 return res.sendStatus(404);

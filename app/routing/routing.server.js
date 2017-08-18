@@ -7,14 +7,15 @@ const router = express.Router();
 const passport = require('passport');
 
 router.post('/api/user', userService.createUser);
+router.post('/api/adminCreateUser', authService.checkAdmin, userService.adminCreateUser);
 router.put('/api/user', authService.checkAuth, userService.updateUser);
 router.put('/api/user/:userId', authService.checkAdmin, userService.updateUserAdmin);
 router.get('/api/user', userService.findUserByUsername);
 router.delete('/api/user/:userId', authService.checkAdmin, userService.deleteUser);
 router.get('/api/getAllUsers', authService.checkAdmin, userService.getAllUsers);
 router.get('/api/user/:userId', authService.checkAdmin, userService.getUserById);
-router.put('/api/user/follow/:userId', authService.checkAuth, userService.followUser);
-router.get('/api/user/following', authService.checkAuth, userService.getFollowedUsers);
+router.put('/api/followUser/:userId', authService.checkAuth, userService.followUser);
+router.get('/api/followingUsers', authService.checkAuth, userService.getFollowedUsers);
 router.post('/api/login', passport.authenticate('local'), authService.login);
 router.post('/api/logout', authService.logout);
 router.get('/api/checkLogin', authService.checkLogin);

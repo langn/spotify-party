@@ -40,6 +40,14 @@
                 admin: accessAdminResource,
                 user: accessPrivateResource
             }
+        }).when("/admin/createUser", {
+            templateUrl: 'views/user/templates/admin-create-user.view.client.html',
+            controller: 'AdminCreateUserController',
+            controllerAs: 'model',
+            resolve: {
+                admin: accessAdminResource,
+                user: accessPrivateResource
+            }
         }).when("/admin/user/:userId", {
             templateUrl: 'views/user/templates/user-details.view.client.html',
             controller: 'UserDetailsController',

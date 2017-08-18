@@ -1,0 +1,20 @@
+<main-nav></main-nav>
+
+<div class="container-fluid">
+    <div ng-if="model.invalidState" class="alert alert-warning">One or more required fields is missing. Try again.</div>
+    <label for="first">First Name</label>
+    <input id="first" ng-model="model.user.firstName" class="form-control">
+    <label for="last">Last Name</label>
+    <input id="last" ng-model="model.user.lastName" class="form-control">
+    <label for="username">Username</label>
+    <input id="username" ng-model="model.user.username" class="form-control">
+    <label for="Password">User Password</label>
+    <input id="password" ng-model="model.user.password" class="form-control" type="password" placeholder="New User Password">
+    <div class="radio-inline">
+        <label><input ng-model="model.user.role" ng-value="'USER'" type="radio">ROLE: USER</label>
+    </div>
+    <div class="radio-inline">
+        <label><input ng-model="model.user.role" ng-value="'ADMIN'" type="radio">ROLE: ADMIN</label>
+    </div>
+    <button ng-click="model.createUser()" class="btn btn-block btn-primary">Create User</button>
+</div>
