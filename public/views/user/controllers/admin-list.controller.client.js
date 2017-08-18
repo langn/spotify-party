@@ -2,7 +2,7 @@
     angular.module('SpotifyParty')
         .controller('AdminListController', AdminListController);
 
-    function AdminListController(UserService) {
+    function AdminListController(UserService, $location) {
         const model = this;
 
         model.deleteUser = deleteUser;
@@ -17,17 +17,17 @@
         }
         init();
 
-        function deleteUser(user) {
-            UserService.deleteUser(user)
+        function deleteUser(userId) {
+            UserService.deleteUser(userId)
                 .then(() => {
-                    model.users = _.reject(model.users, {_id: user._id});
+                    model.users = _.reject(model.users, {_id: userId});
                 }).catch((error) => {
                     console.error('Error removing user ' + error);
             });
         }
 
         function goToUser(user) {
-
+            $location.path('/admin/user/' + user._id);
         }
     }
 })();

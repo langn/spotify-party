@@ -8,9 +8,11 @@ const passport = require('passport');
 
 router.post('/api/user', userService.createUser);
 router.put('/api/user', authService.checkAuth, userService.updateUser);
+router.put('/api/user/:userId', authService.checkAdmin, userService.updateUserAdmin);
 router.get('/api/user', userService.findUserByUsername);
 router.delete('/api/user/:userId', authService.checkAdmin, userService.deleteUser);
-router.get('/api/user/all', authService.checkAdmin, userService.getAllUsers);
+router.get('/api/getAllUsers', authService.checkAdmin, userService.getAllUsers);
+router.get('/api/user/:userId', authService.checkAdmin, userService.getUserById);
 router.put('/api/user/follow/:userId', authService.checkAuth, userService.followUser);
 router.get('/api/user/following', authService.checkAuth, userService.getFollowedUsers);
 router.post('/api/login', passport.authenticate('local'), authService.login);

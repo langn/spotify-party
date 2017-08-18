@@ -12,7 +12,6 @@
         navModel.pageName = 'UNKNOWN PAGE';
         function init() {
             navModel.pageName = getPage();
-            console.log('Page name: ' + navModel.pageName);
         }
         init();
 
@@ -40,6 +39,9 @@
                     break;
                 case 'views/user/templates/admin-list.view.client.html' :
                     page = 'ADMIN-LIST';
+                    break;
+                case 'views/user/templates/user-details.view.client.html' :
+                    page = 'USER-DETAILS';
                     break;
                 case 'views/party/templates/party-list.view.client.html' :
                     page = "PARTY-LIST";

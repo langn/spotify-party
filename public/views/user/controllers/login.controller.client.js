@@ -15,9 +15,9 @@
 
         function login(user) {
             AuthService.login(user.username, user.password)
-                .then((response) => {
-                    $location.path('/profile')
-                }).catch((error) => {
+                .then(() => {
+                    $location.path('/')
+                }).catch(() => {
                     model.invalidLogin = true;
             });
         }

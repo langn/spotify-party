@@ -7,6 +7,7 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserById = findUserById;
 userModel.updateUser = updateUser;
+userModel.updateUserAdmin = updateUserAdmin;
 userModel.followUser = followUser;
 userModel.getFollowedUsers = getFollowedUsers;
 userModel.getFollowingUsers = getFollowingUsers;
@@ -14,6 +15,7 @@ userModel.getAllUsers = getAllUsers;
 userModel.addFollowingUser = addFollowingUser;
 userModel.deleteUserFromFollowing = deleteUserFromFollowing;
 userModel.deleteUser = deleteUser;
+userModel.getUserById = getUserById;
 
 module.exports = userModel;
 
@@ -37,6 +39,12 @@ function updateUser(userId, user) {
     return userModel.update(
         {_id: userId},
         {$set: {firstName: user.firstName, lastName: user.lastName}});
+}
+
+function updateUserAdmin(userId, user) {
+    return userModel.update(
+        {_id: userId},
+        {$set: user});
 }
 
 function followUser(followingUserId, userIdToFollow) {
@@ -78,4 +86,8 @@ function deleteUser(userId) {
 
 function getAllUsers() {
     return userModel.find();
+}
+
+function getUserById(userId) {
+    return userModel.findUserById(userId);
 }

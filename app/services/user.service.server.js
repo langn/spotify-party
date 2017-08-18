@@ -2,12 +2,14 @@ const userModel = require('../model/user.model.server');
 
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;
+module.exports.updateUserAdmin = updateUserAdmin;
 module.exports.findUserByUsername = findUserByUsername;
 module.exports.followUser = followUser;
 module.exports.getFollowedUsers = getFollowedUsers;
 module.exports.getFollowingUsers = getFollowingUsers;
 module.exports.getAllUsers = getAllUsers;
 module.exports.deleteUser = deleteUser;
+module.exports.getUserById = getUserById;
 
 function createUser(req, res) {
     const user = req.body;
@@ -39,6 +41,19 @@ function updateUser(req, res) {
         }).catch((error) => {
             console.error('Error updating user ' + error);
             return res.sendStatus(500);
+    });
+}
+
+function updateUserAdmin(req, res) {
+    const userId = req.params.userId;
+    const user = req.body;
+
+    userModel.updateUserAdmin(userId, user)
+        .then(() => {
+            return res.sendStatus(204);
+        }).catch((error) => {
+        console.error('Error updating user ' + error);
+        return res.sendStatus(500);
     });
 }
 
@@ -119,5 +134,19 @@ function deleteUser(req, res) {
     });
 }
 
+function getUserById(req, res) {
+    const userId = req.params.userId;
+
+    userModel.getUserById(userId)
+        .then((user) => {
+            if(!user) {
+                return res.sendStatus(404);
+            }
+            return res.status(200).json(user);
+        }).catch((error) => {
+            console.error('Error getting user by ID ' + error);
+            return res.sendStatus(500);
+    })
+}
 
 

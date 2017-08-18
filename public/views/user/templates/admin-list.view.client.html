@@ -14,10 +14,10 @@
                 <h2>{{user.username}}</h2>
             </div>
             <div class="col-xs-2">
-                <a ng-click="model.deleteUser(user)" class="pull-right fa fa-3x fa-ban"></a>
+                <a ng-click="model.deleteUser(user._id)" class="pull-right fa fa-3x fa-ban"></a>
             </div>
             <div class="col-xs-2">
-                <a ng-click="model.userDetails(user)" class="pull-right fa fa-3x fa-caret-right"></a>
+                <a ng-click="model.goToUser(user)" class="pull-right fa fa-3x fa-caret-right"></a>
             </div>
         </div>
     </li>

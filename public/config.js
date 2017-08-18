@@ -40,6 +40,14 @@
                 admin: accessAdminResource,
                 user: accessPrivateResource
             }
+        }).when("/admin/user/:userId", {
+            templateUrl: 'views/user/templates/user-details.view.client.html',
+            controller: 'UserDetailsController',
+            controllerAs: 'model',
+            resolve: {
+                admin: accessAdminResource,
+                user: accessPrivateResource
+            }
         }).when("/profile", {
             templateUrl: 'views/user/templates/profile.view.client.html',
             controller: 'ProfileController',

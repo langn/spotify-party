@@ -9,7 +9,7 @@
         function init() {
             UserService.getFollowedUsers()
                 .then((following) => {
-                    model.users = following;
+                    model.following = following;
                 })
         }
         init();

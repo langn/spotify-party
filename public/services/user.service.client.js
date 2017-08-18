@@ -6,10 +6,12 @@
         this.createUser = createUser;
         this.updateUser = updateUser;
         this.findUserByUsername = findUserByUsername;
+        this.findUserById = findUserById;
         this.followUser = followUser;
         this.getFollowedUsers = getFollowedUsers;
         this.findAllUsers = findAllUsers;
         this.deleteUser = deleteUser;
+        this.updateUserById = updateUserById;
 
 
         function createUser(user) {
@@ -18,6 +20,10 @@
 
         function updateUser(user) {
             return $http.put('/api/user', user);
+        }
+
+        function updateUserById(userId, user) {
+            return $http.put('/api/user/' + userId, user);
         }
 
         function followUser(userId) {
@@ -41,7 +47,7 @@
         }
 
         function findAllUsers() {
-            return $http.get('/api/user/all')
+            return $http.get('/api/getAllUsers')
                 .then(function(response) {
                     return response.data;
                 }).catch(() => {
@@ -49,10 +55,18 @@
                 })
         }
 
-        function deleteUser(user) {
-            return $http.delete('/api/user/' + user._id);
+        function deleteUser(userId) {
+            return $http.delete('/api/user/' + userId);
         }
 
+        function findUserById(userId) {
+            return $http.get('/api/user/' + userId)
+                .then((response) => {
+                    return response.data;
+                }).catch(() => {
+                    return null;
+                });
+        }
     }
 
 })();
