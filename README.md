@@ -7,6 +7,6 @@ I am currently working on getting the app hosted, but the code is complete and c
 This repository is for the assignemnts in the web dev course at Northeastern. I have a seperate repo for my project.
 
 The assignments are hosted here: [Assignments host](https://summer2-webdev-assignments.herokuapp.com/)  
-The project is hosted here: [Come back later]()  
+The project is hosted here: [Project host](https://spotify-party.herokuapp.com/)  
 The repository for my assignemnts are here: [Assignments repo](https://github.com/langn/lang-nate-webdev)   
 The repository for my project is here: [Project repo](https://github.com/langn/spotify-party)  
