@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
     role: {type: String, enum: ['USER', 'ADMIN'], default: 'USER'},
     spotifyAccessToken: {type: String, select: false},
     spotifyUsername: {type: String, select: false},
-    following: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}]
+    following: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}],
+    followedBy: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}]
 }, {collection: 'user'});
 
 module.exports = userSchema;

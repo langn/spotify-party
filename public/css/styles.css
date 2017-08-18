@@ -229,6 +229,11 @@ li.widget {
     border-top: 0px;
 }
 
+.list-group-item .fa {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .vertical-center > a {
     padding-top:32px;
     padding-bottom: 32px;

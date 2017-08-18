@@ -5,6 +5,9 @@
     function AdminListController(UserService) {
         const model = this;
 
+        model.deleteUser = deleteUser;
+        model.goToUser = goToUser;
+
         model.pageTitle = 'Admin User List';
         function init() {
             UserService.findAllUsers()
@@ -13,5 +16,18 @@
                 });
         }
         init();
+
+        function deleteUser(user) {
+            UserService.deleteUser(user)
+                .then(() => {
+                    model.users = _.reject(model.users, {_id: user._id});
+                }).catch((error) => {
+                    console.error('Error removing user ' + error);
+            });
+        }
+
+        function goToUser(user) {
+
+        }
     }
 })();

@@ -9,6 +9,8 @@
         this.followUser = followUser;
         this.getFollowedUsers = getFollowedUsers;
         this.findAllUsers = findAllUsers;
+        this.deleteUser = deleteUser;
+
 
         function createUser(user) {
             return $http.post('/api/user', user);
@@ -45,6 +47,10 @@
                 }).catch(() => {
                     return [];
                 })
+        }
+
+        function deleteUser(user) {
+            return $http.delete('/api/user/' + user._id);
         }
 
     }

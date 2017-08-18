@@ -9,6 +9,7 @@ const passport = require('passport');
 router.post('/api/user', userService.createUser);
 router.put('/api/user', authService.checkAuth, userService.updateUser);
 router.get('/api/user', userService.findUserByUsername);
+router.delete('/api/user/:userId', authService.checkAdmin, userService.deleteUser);
 router.get('/api/user/all', authService.checkAdmin, userService.getAllUsers);
 router.put('/api/user/follow/:userId', authService.checkAuth, userService.followUser);
 router.get('/api/user/following', authService.checkAuth, userService.getFollowedUsers);

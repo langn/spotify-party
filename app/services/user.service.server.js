@@ -5,7 +5,9 @@ module.exports.updateUser = updateUser;
 module.exports.findUserByUsername = findUserByUsername;
 module.exports.followUser = followUser;
 module.exports.getFollowedUsers = getFollowedUsers;
+module.exports.getFollowingUsers = getFollowingUsers;
 module.exports.getAllUsers = getAllUsers;
+module.exports.deleteUser = deleteUser;
 
 function createUser(req, res) {
     const user = req.body;
@@ -62,11 +64,13 @@ function followUser(req, res) {
 
     userModel.followUser(followingUserId, userIdToFollow)
         .then(() => {
-            return res.sendStatus(204)
+            return userModel.addFollowingUser(followingUserId, userIdToFollow)
+        }).then(() => {
+            return res.sendStatus(204);
         }).catch((error) => {
-            console.error('Error following user ' + error);
-            return res.sendStatus(500)
-    });
+                console.error('Error following user ' + error);
+                return res.sendStatus(500)
+        });
 }
 
 function getFollowedUsers(req, res) {
@@ -81,6 +85,18 @@ function getFollowedUsers(req, res) {
     })
 }
 
+function getFollowingUsers(req, res) {
+    const user = req.user;
+
+    userModel.getFollowingUsers(user._id)
+        .then((response) => {
+            return res.status(200).json(response);
+        }).catch((error) => {
+        console.error('Error getting followed users ' + error);
+        return res.sendStatus(500);
+    })
+}
+
 function getAllUsers(req, res) {
     userModel.getAllUsers()
         .then((response) => {
@@ -88,6 +104,18 @@ function getAllUsers(req, res) {
         }).catch((error) => {
             console.error('Error getting all users ' + error);
             return res.sendStatus(500);
+    });
+}
+
+function deleteUser(req, res) {
+    const userId = req.params.userId;
+
+    userModel.deleteUser(userId)
+        .then(() => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.error('Error removing user ' + error);
+            res.sendStatus(500);
     });
 }
 
