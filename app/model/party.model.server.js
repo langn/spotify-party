@@ -32,7 +32,7 @@ function addSongToParty(partyId, song) {
 function addUserToParty(user, partyId) {
     return partyModel.update(
         {_id: partyId},
-        {$push: {users: user._id}});
+        {$addToSet: {users: user._id}});
 }
 
 function voteSong(partyId, userId, trackId, direction) {
