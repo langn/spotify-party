@@ -1,6 +1,11 @@
 const rp = require('request-promise-native');
 const authController = require('./authentication.service.server');
+const partyModel = require('../model/party.model.server');
 const _ = require('lodash');
+
+module.exports.searchSong = searchSong;
+module.exports.getSongById = getSongById;
+module.exports.voteSong = voteSong;
 
 function searchSong(request, response) {
     //this will be removed in the future
@@ -70,5 +75,18 @@ function getSongById(request, response) {
 
 }
 
-module.exports.searchSong = searchSong;
-module.exports.getSongById = getSongById;
+function voteSong(req, res) {
+    const user = req.user;
+    const voteDir = req.params.direction;
+    const partyId = req.params.partyId;
+    const trackId = req.params.trackId;
+
+    partyModel.voteSong(partyId, user._id, trackId, voteDir)
+        .then((status) => {
+            res.sendStatus(status);
+        }).catch((errorStatus) => {
+            console.error('Error voting for song ' + errorStatus);
+            res.sendStatus(errorStatus);
+    });
+}
+

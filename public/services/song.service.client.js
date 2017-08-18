@@ -6,6 +6,7 @@
         this.searchSong = searchSong;
         this.getSongById = getSongById;
         this.addSongToParty = addSongToParty;
+        this.voteSong = voteSong;
 
         function searchSong(searchString) {
             return $http.get('/api/song/search' + '?searchString=' + searchString)
@@ -32,5 +33,11 @@
                 });
         }
 
+        function voteSong(partyId, songId, direction) {
+            return $http({
+                method: 'PUT',
+                url: '/api/party/' + partyId + '/song/' + songId + '/vote/' + direction
+            });
+        }
     }
 })();

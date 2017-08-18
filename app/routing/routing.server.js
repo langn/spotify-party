@@ -16,9 +16,11 @@ router.get('/api/checkLogin', authService.checkLogin);
 
 router.post('/api/party', authService.checkAuth, partyService.createParty);
 router.get('/api/party/:partyId', partyService.getPartyById);
+router.put('/api/party/:partyId/song/:trackId/vote/:direction', authService.checkAuth, songService.voteSong);
 router.put('/api/party/:partyId/add-song', partyService.addSongToParty);
 
 router.get('/api/song/search', songService.searchSong);
 router.get('/api/song/:trackId', songService.getSongById);
+
 
 module.exports = router;
