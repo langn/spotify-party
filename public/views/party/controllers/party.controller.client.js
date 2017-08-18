@@ -9,6 +9,7 @@
         model.goToSongSearch = goToSongSearch;
         model.upvoteSong = upvoteSong;
         model.downvoteSong = downvoteSong;
+        model.goToDetails = goToDetails;
 
         const partyId = $routeParams['partyId'];
 
@@ -56,6 +57,10 @@
                     model.multipleVotes = true;
                 }
             });
+        }
+
+        function goToDetails(song) {
+            $location.path('/party/' + partyId + '/song/' + song.trackId);
         }
 
     }

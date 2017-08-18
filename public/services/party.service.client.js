@@ -7,6 +7,7 @@
         this.getPartyById = getPartyById;
         this.fetchCachedId = fetchedCachedId;
         this.getPartiesForUser = getPartiesForUser;
+        this.getPartiesWithSong = getPartiesWithSong;
 
         let partyCache;
 
@@ -43,6 +44,15 @@
 
         function getPartiesForUser() {
             return $http.get('/api/party')
+                .then((response) => {
+                    return response.data;
+                }).catch((error) => {
+                    console.error(error);
+                });
+        }
+
+        function getPartiesWithSong(trackId) {
+            return $http.get('/api/party/song/' + trackId)
                 .then((response) => {
                     return response.data;
                 }).catch((error) => {

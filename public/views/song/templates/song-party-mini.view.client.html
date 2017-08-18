@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-3 remove-padding-left">
-            <img ng-src="{{song.artUrl}}" width="100%">
+            <img ng-click="model.goToDetails(song)" ng-src="{{song.artUrl}}" width="100%">
         </div>
-        <div class="col-xs-5">
-            <h5 class="no-wrap">{{song.title}}</h5>
-            <h6 class="no-wrap">{{song.artist}}</h6>
+        <div ng-click="model.goToDetails(song)" class="col-xs-5">
+            <h3 class="no-wrap">{{song.title}}</h4>
+            <h5 class="no-wrap">{{song.artist}}</h5>
         </div>
         <div class="vertical-center col-xs-1 float-left">
             <a ng-click="model.upvoteSong(song)" class="fa fa-thumbs-up fa-lg"></a>

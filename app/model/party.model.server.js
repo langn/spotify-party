@@ -10,6 +10,7 @@ partyModel.addSongToParty = addSongToParty;
 partyModel.addUserToParty = addUserToParty;
 partyModel.voteSong = voteSong;
 partyModel.getPartiesForUser = getPartiesForUser;
+partyModel.getPartiesWithSong = getPartiesWithSong;
 
 module.exports = partyModel;
 
@@ -68,4 +69,8 @@ function voteSong(partyId, userId, trackId, direction) {
                 deferred.reject(500);
             });
     return deferred.promise;
+}
+
+function getPartiesWithSong(trackId) {
+    return partyModel.find({'songs.trackId': trackId}, {host: 1, createdDate: 1, users: 1});
 }

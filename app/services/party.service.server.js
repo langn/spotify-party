@@ -4,6 +4,7 @@ module.exports.createParty = createParty;
 module.exports.getPartyById = getPartyById;
 module.exports.addSongToParty = addSongToParty;
 module.exports.getPartiesForUser = getPartiesForUser;
+module.exports.getPartiesWithSong = getPartiesWithSong;
 
 function createParty(req, res) {
     const host = req.user;
@@ -57,4 +58,16 @@ function getPartiesForUser(req, res) {
             console.error('Error getting parties for user ' + error);
             return res.sendStatus(500);
     })
+}
+
+function getPartiesWithSong(req, res) {
+    const trackId = req.params.trackId;
+    partyModel.getPartiesWithSong(trackId)
+        .then((parties) => {
+            return res.status(200).json(parties);
+        }).catch((error) => {
+            console.error('Error getting parties with trackId ' + error);
+            return res.sendStatus(500);
+    });
+
 }
