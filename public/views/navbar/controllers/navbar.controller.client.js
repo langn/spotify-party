@@ -35,6 +35,9 @@
                 case 'views/user/templates/follow-user.view.client.html' :
                     page = 'FOLLOW-USER';
                     break;
+                case 'views/party/templates/party-list.view.client.html' :
+                    page = "PARTY-LIST";
+                    break;
                 case 'views/party/templates/party.view.client.html' :
                     page = "PARTY";
                     break;

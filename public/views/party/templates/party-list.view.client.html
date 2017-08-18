@@ -1,7 +1,20 @@
 <main-nav></main-nav>
 
 <div class="container-fluid">
-    <div ng-repeat="party in model.parties">
-        {{party}}
-    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Party ID</th>
+            <th>Host Name</th>
+            <th>Date Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-click="model.goToParty(party)" ng-repeat="party in model.parties">
+            <td>{{party._id}}</td>
+            <td>{{party.host.firstName.substring(0,1) + '. ' + party.host.lastName}}</td>
+            <td>{{party.createdDate | date: 'short'}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>

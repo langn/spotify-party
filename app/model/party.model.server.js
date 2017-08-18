@@ -9,6 +9,7 @@ partyModel.getPartyById = getPartyById;
 partyModel.addSongToParty = addSongToParty;
 partyModel.addUserToParty = addUserToParty;
 partyModel.voteSong = voteSong;
+partyModel.getPartiesForUser = getPartiesForUser;
 
 module.exports = partyModel;
 
@@ -33,6 +34,11 @@ function addUserToParty(user, partyId) {
     return partyModel.update(
         {_id: partyId},
         {$addToSet: {users: user._id}});
+}
+
+function getPartiesForUser(user) {
+    const userId = user._id;
+    return partyModel.find({users: userId}, {host: 1, createdDate: 1});
 }
 
 function voteSong(partyId, userId, trackId, direction) {

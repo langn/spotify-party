@@ -43,3 +43,13 @@ module.exports.addSongToParty = function(req, res) {
             return res.sendStatus(500);
     });
 };
+
+module.exports.getPartiesForUser = function(req, res) {
+    partyModel.getPartiesForUser(req.user)
+        .then(function(parties) {
+            return res.status(200).json(parties);
+        }).catch((error) => {
+            console.error('Error getting parties for user ' + error);
+            return res.sendStatus(500);
+    })
+};

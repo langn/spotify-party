@@ -6,6 +6,7 @@
         this.createParty = createParty;
         this.getPartyById = getPartyById;
         this.fetchCachedId = fetchedCachedId;
+        this.getPartiesForUser = getPartiesForUser;
 
         let partyCache;
 
@@ -38,6 +39,15 @@
                 }).catch((error) => {
                     console.error(error);
                 })
+        }
+
+        function getPartiesForUser() {
+            return $http.get('/api/party')
+                .then((response) => {
+                    return response.data;
+                }).catch((error) => {
+                    console.error(error);
+                });
         }
 
     }
