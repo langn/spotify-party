@@ -1,5 +1,24 @@
 <main-nav></main-nav>
 
-<div class="container-fluid">
-
-</div>
+<ul class="list-group">
+    <li class="list-group-item active">
+        <div class="row active">
+            <div class="col-xs-6">
+                <h4>Username</h4>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item" ng-repeat="user in model.users">
+        <div class="row">
+            <div class="col-xs-8">
+                <h2>{{user.username}}</h2>
+            </div>
+            <div class="col-xs-2">
+                <a ng-click="model.deleteUser(user)" class="pull-right fa fa-3x fa-ban"></a>
+            </div>
+            <div class="col-xs-2">
+                <a ng-click="model.userDetails(user)" class="pull-right fa fa-3x fa-caret-right"></a>
+            </div>
+        </div>
+    </li>
+</ul>

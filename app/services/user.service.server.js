@@ -5,6 +5,7 @@ module.exports.updateUser = updateUser;
 module.exports.findUserByUsername = findUserByUsername;
 module.exports.followUser = followUser;
 module.exports.getFollowedUsers = getFollowedUsers;
+module.exports.getAllUsers = getAllUsers;
 
 function createUser(req, res) {
     const user = req.body;
@@ -78,6 +79,16 @@ function getFollowedUsers(req, res) {
             console.error('Error getting followed users ' + error);
             return res.sendStatus(500);
     })
+}
+
+function getAllUsers(req, res) {
+    userModel.getAllUsers()
+        .then((response) => {
+            return res.status(200).json(response);
+        }).catch((error) => {
+            console.error('Error getting all users ' + error);
+            return res.sendStatus(500);
+    });
 }
 
 

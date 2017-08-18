@@ -12,6 +12,7 @@ passport.deserializeUser(deserializeUser);
 
 module.exports.authenticateClient = authenticateClient;
 module.exports.checkAuth = checkAuth;
+module.exports.isUserAdmin = isUserAdmin;
 module.exports.checkAdmin = checkAdmin;
 module.exports.login = login;
 module.exports.logout = logout;
@@ -47,12 +48,25 @@ function checkAuth(req, res, next) {
     }
 }
 
-function checkAdmin(req, res) {
+function isUserAdmin(req, res) {
     const user = req.user;
-    if (user.role === 'ADMIN') {
+    if (!user) {
+        res.status(401).json(false);
+    }
+    else if (user.role === 'ADMIN') {
         res.status(200).json(true);
     } else {
         res.status(401).json(false);
+    }
+}
+
+function checkAdmin(req, res, next) {
+    if (!req.isAuthenticated()) {
+        res.sendStatus(401);
+    } else if (req.user.role === 'ADMIN') {
+            next();
+    } else {
+        res.sendStatus(401);
     }
 }
 

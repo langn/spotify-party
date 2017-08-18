@@ -8,6 +8,7 @@
         this.findUserByUsername = findUserByUsername;
         this.followUser = followUser;
         this.getFollowedUsers = getFollowedUsers;
+        this.findAllUsers = findAllUsers;
 
         function createUser(user) {
             return $http.post('/api/user', user);
@@ -35,6 +36,15 @@
                 }).catch(() => {
                     return null;
                 });
+        }
+
+        function findAllUsers() {
+            return $http.get('/api/user/all')
+                .then(function(response) {
+                    return response.data;
+                }).catch(() => {
+                    return [];
+                })
         }
 
     }

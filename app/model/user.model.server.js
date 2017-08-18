@@ -9,6 +9,7 @@ userModel.findUserById = findUserById;
 userModel.updateUser = updateUser;
 userModel.followUser = followUser;
 userModel.getFollowedUsers = getFollowedUsers;
+userModel.getAllUsers = getAllUsers;
 
 module.exports = userModel;
 
@@ -42,4 +43,8 @@ function followUser(followingUserId, userIdToFollow) {
 
 function getFollowedUsers(userId) {
     return userModel.findById(userId).populate('following');
+}
+
+function getAllUsers() {
+    return userModel.find();
 }

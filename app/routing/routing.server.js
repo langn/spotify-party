@@ -9,12 +9,13 @@ const passport = require('passport');
 router.post('/api/user', userService.createUser);
 router.put('/api/user', authService.checkAuth, userService.updateUser);
 router.get('/api/user', userService.findUserByUsername);
+router.get('/api/user/all', authService.checkAdmin, userService.getAllUsers);
 router.put('/api/user/follow/:userId', authService.checkAuth, userService.followUser);
 router.get('/api/user/following', authService.checkAuth, userService.getFollowedUsers);
 router.post('/api/login', passport.authenticate('local'), authService.login);
 router.post('/api/logout', authService.logout);
 router.get('/api/checkLogin', authService.checkLogin);
-router.get('/api/checkAdmin', authService.checkAdmin);
+router.get('/api/checkAdmin', authService.isUserAdmin);
 
 router.post('/api/party', authService.checkAuth, partyService.createParty);
 router.get('/api/party', authService.checkAuth, partyService.getPartiesForUser);
