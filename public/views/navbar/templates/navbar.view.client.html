@@ -32,9 +32,11 @@
         <div ng-switch="navModel.pageName">
             <div ng-switch-when="HOME">
                 <a ng-if="!model.user" href="#/login">Login</a>
+                <a ng-if="model.user" href="#/profile">Profile</a>
                 <a ng-if="model.user" ng-click="model.logout()">Logout</a>
             </div>
             <div ng-switch-when="PROFILE">
+                <a class="fa fa-music fa-lg" href="#/party"></a>
                 <a class="fa fa-users fa-lg" href="#/follow-user"></a>
                 <a class="fa fa-check fa-lg" ng-click="model.updateUser()"></a>
             </div>

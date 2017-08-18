@@ -1,6 +1,11 @@
 const partyModel = require('../model/party.model.server');
 
-module.exports.createParty = function(req, res) {
+module.exports.createParty = createParty;
+module.exports.getPartyById = getPartyById;
+module.exports.addSongToParty = addSongToParty;
+module.exports.getPartiesForUser = getPartiesForUser;
+
+function createParty(req, res) {
     const host = req.user;
 
     partyModel.createParty(host)
@@ -10,9 +15,9 @@ module.exports.createParty = function(req, res) {
             console.error('Error creating party ' + error);
             return res.sendStatus(500);
     });
-};
+}
 
-module.exports.getPartyById = function(req, res) {
+function getPartyById(req, res) {
     const user = req.user;
 
     partyModel.getPartyById(req.params.partyId)
@@ -32,9 +37,9 @@ module.exports.getPartyById = function(req, res) {
             console.error('Error getting party ' + error);
             return res.sendStatus(500);
     });
-};
+}
 
-module.exports.addSongToParty = function(req, res) {
+function addSongToParty(req, res) {
     partyModel.addSongToParty(req.params.partyId, req.body)
         .then(function() {
             return res.sendStatus(204);
@@ -42,9 +47,9 @@ module.exports.addSongToParty = function(req, res) {
             console.error('Error adding song to party ' + error);
             return res.sendStatus(500);
     });
-};
+}
 
-module.exports.getPartiesForUser = function(req, res) {
+function getPartiesForUser(req, res) {
     partyModel.getPartiesForUser(req.user)
         .then(function(parties) {
             return res.status(200).json(parties);
@@ -52,4 +57,4 @@ module.exports.getPartiesForUser = function(req, res) {
             console.error('Error getting parties for user ' + error);
             return res.sendStatus(500);
     })
-};
+}
