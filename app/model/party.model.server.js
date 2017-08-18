@@ -7,6 +7,7 @@ const q = require('q');
 partyModel.createParty = createParty;
 partyModel.getPartyById = getPartyById;
 partyModel.addSongToParty = addSongToParty;
+partyModel.addUserToParty = addUserToParty;
 partyModel.voteSong = voteSong;
 
 module.exports = partyModel;
@@ -26,6 +27,12 @@ function addSongToParty(partyId, song) {
     return partyModel.update(
         {_id: partyId},
         {$push: {songs: song}});
+}
+
+function addUserToParty(user, partyId) {
+    return partyModel.update(
+        {_id: partyId},
+        {$push: {users: user._id}});
 }
 
 function voteSong(partyId, userId, trackId, direction) {

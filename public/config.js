@@ -32,6 +32,13 @@
             resolve: {
                 user: accessPrivateResource
             }
+        }).when("/party", {
+            templateUrl: 'views/party/templates/party-list.view.client.html',
+            controller: 'PartyListController',
+            controllerAs: 'model',
+            resolve: {
+                user: accessPrivateResource
+            }
         }).when("/party/:partyId", {
             templateUrl: 'views/party/templates/party.view.client.html',
             controller: 'PartyController',

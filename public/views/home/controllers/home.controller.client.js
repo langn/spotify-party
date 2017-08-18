@@ -49,5 +49,6 @@
                     $location.path('/login');
                 });
         }
+
     }
 })();
