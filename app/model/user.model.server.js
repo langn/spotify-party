@@ -33,6 +33,8 @@ function findOrCreateUserBySpotifyId(spotifyId) {
                     username: spotifyId
                 };
                 return userModel.createUser(user);
+            } else {
+                return user;
             }
         }).catch((error) => {
             console.error('Error creating user with spotifyId ' + error);
