@@ -200,6 +200,10 @@ li.widget {
     margin-top: -12px;
 }
 
+.large-font {
+    font-size: 32px;
+}
+
 .user-mini {
     border: 3px solid #000000;
     border-left: 0px;

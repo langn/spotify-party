@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-2 remove-padding-left">
+        <div class="hidden-xs col-sm-2 remove-padding-left">
             <img ng-click="model.goToDetails(song)" ng-src="{{song.artUrl}}" width="100%">
         </div>
         <div ng-click="model.goToDetails(song)" class="col-xs-6">
@@ -8,16 +8,16 @@
             <h5 class="no-wrap">{{song.artist}}</h5>
         </div>
         <div class="vertical-center col-xs-1 float-left">
-            <a ng-click="model.upvoteSong(song)" class="fa fa-thumbs-up fa-3x"></a>
+            <a ng-click="model.upvoteSong(song)" class="fa fa-thumbs-up fa-2x"></a>
         </div>
         <div class="vertical-center col-xs-1">
-            <h4>{{song.votes}}</h4>
+            <h4 class="large-font">{{song.votes}}</h4>
         </div>
         <div class="vertical-center col-xs-1">
-            <a ng-click="model.downvoteSong(song)" class="fa fa-thumbs-down fa-3x"></a>
+            <a ng-click="model.downvoteSong(song)" class="fa fa-thumbs-down fa-2x"></a>
         </div>
         <div class="vertical-center col-xs-1">
-            <a ng-click="model.goToDetails(song)" class="fa fa-caret-left fa-3x"></a>
+            <a ng-click="model.goToDetails(song)" class="fa fa-caret-right fa-2x"></a>
         </div>
     </div>
 </div>
