@@ -6,7 +6,6 @@
         const model = this;
 
         model.goBack = goBack;
-        model.goToAddFriend = goToAddFriend;
         model.updateUser = updateUser;
 
         model.pageTitle = 'Profile';
@@ -17,10 +16,6 @@
 
         function goBack() {
             $window.history.back();
-        }
-
-        function goToAddFriend() {
-            //TODO
         }
 
         function updateUser() {

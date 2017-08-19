@@ -7,5 +7,5 @@
     <input id="last" ng-model="model.user.lastName" class="form-control">
     <label for="username">Username</label>
     <input id="username" ng-model="model.user.username" class="form-control" readonly>
-    <button class="btn btn-block btn-spotify">Authenticate Spotify Account</button>
+    <button ng-click="model.updateUser()" class="btn btn-block btn-primary">Save Changes</button>
 </div>
