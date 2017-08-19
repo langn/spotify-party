@@ -17,7 +17,7 @@
                 .then(function(songDetails){
                     const songLenthMin = songDetails.duration / 1000 / 60;
                     const songLenthSec = (songLenthMin - (Math.floor(songLenthMin))) * 60;
-                    songDetails.duration = (Math.floor(songLenthMin)) + ':' + (Math.round(songLenthSec));
+                    songDetails.duration = (Math.floor(songLenthMin)) + ':' + (_.padStart((Math.round(songLenthSec)), 2, '0'));
                     model.song = songDetails;
                 });
 
