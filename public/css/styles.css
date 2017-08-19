@@ -193,6 +193,7 @@ li.widget {
     padding-left: -5px;
     padding-right: -5px;
     max-height: 100px;
+    background-color: white;
 }
 
 .user-mini-group {
